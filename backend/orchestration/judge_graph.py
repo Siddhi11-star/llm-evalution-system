@@ -4,9 +4,9 @@ import operator
 from typing import TypedDict, Annotated
 from langgraph.graph import StateGraph, START, END
 
-from ..agents.accuracy import judge_accuracy
-from ..agents.hallucination import judge_hallucination
-from ..agents.relevance import judge_relevance
+from backend.agents.accuracy import judge_accuracy
+from backend.agents.hallucination import judge_hallucination
+from backend.agents.relevance import judge_relevance
 
 
 def merge_scores(left: dict, right: dict) -> dict:
@@ -47,9 +47,11 @@ def relevance_node(state: JudgeState) -> dict:
 
 def aggregator_node(state: JudgeState) -> dict:
     scores = state["individual_scores"]
-    total_weight = sum(RUBRIC_WEIGHTS[name] for name in scores)
+    # Only include judges that both returned a result AND have a defined weight
+    valid = {name: scores[name] for name in scores if name in RUBRIC_WEIGHTS}
+    total_weight = sum(RUBRIC_WEIGHTS[name] for name in valid)
     weighted_sum = sum(
-        scores[name]["score"] * RUBRIC_WEIGHTS[name] for name in scores
+        valid[name]["score"] * RUBRIC_WEIGHTS[name] for name in valid
     )
     overall = weighted_sum / total_weight if total_weight else 0.0
     return {"overall_score": round(overall, 2)}
