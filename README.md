@@ -34,11 +34,23 @@ frontend/            # React dashboard
 git clone https://github.com/Hitarth-Saparia/llm-judge-eval-system.git
 cd llm-judge-eval-system
 
-# Copy env template and fill in API keys
-cp .env.example .env
+# Create and activate a virtual environment (Python 3.11+ recommended)
+python -m venv venv
+source venv/bin/activate          # Windows: venv\Scripts\activate
 
-# Spin up Postgres + pgvector, backend, frontend
+# Install dependencies
+# NOTE: requirements.txt lives in backend/, not the repo root
+pip install -r backend/requirements.txt
+
+# Create .env at the repo root and fill in your API keys
+# (required keys: DATABASE_URL, GROQ_API_KEY, GEMINI_API_KEY)
+cp .env.example .env              # or create .env manually — see .env.example for the template
+
+# Spin up Postgres + pgvector
 docker-compose up --build
+
+# Seed the database (models + rubrics tables)
+python -m backend.db.seed
 ```
 
 ## Team
