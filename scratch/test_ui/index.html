@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judge Pipeline — Local Test Harness</title>
+<style>
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.14);
+    --glass-bg-strong: rgba(255, 255, 255, 0.20);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --text-main: #1f2430;
+    --text-soft: rgba(31, 36, 48, 0.7);
+    --accent: #6c5ce7;
+    --good: #2ecc71;
+    --mid: #f1c40f;
+    --bad: #e74c3c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 45%, #8ec5fc 100%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    padding: 32px 20px 60px;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  header h1 {
+    margin: 0 0 6px;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  header p {
+    margin: 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18);
+    padding: 22px 24px;
+  }
+
+  .input-card {
+    margin-bottom: 22px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-main);
+  }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    resize: vertical;
+    min-height: 90px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.55);
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  textarea:focus, input[type="text"]:focus {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.75);
+  }
+
+  input[type="text"] { min-height: unset; }
+
+  .row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .row .field { flex: 1; min-width: 200px; margin-bottom: 0; }
+
+  button#runBtn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(108, 92, 231, 0.4);
+    transition: transform 0.1s, box-shadow 0.15s, opacity 0.15s;
+    white-space: nowrap;
+  }
+
+  button#runBtn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(108, 92, 231, 0.5);
+  }
+
+  button#runBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .overall-card {
+    text-align: center;
+    margin-bottom: 22px;
+    display: none;
+  }
+
+  .overall-card .score-value {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 6px 0;
+  }
+
+  .overall-card .score-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  @media (max-width: 820px) {
+    .results-grid { grid-template-columns: 1fr; }
+  }
+
+  .result-card { display: none; }
+
+  .result-card h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .result-card .score {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 6px 0 10px;
+  }
+
+  .result-card .reasoning {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+
+  .result-card .judge-model {
+    font-size: 0.72rem;
+    color: var(--text-soft);
+    border-top: 1px solid rgba(255,255,255,0.4);
+    padding-top: 8px;
+  }
+
+  #status {
+    text-align: center;
+    margin: 14px 0;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+
+  .error-card {
+    display: none;
+    margin-bottom: 22px;
+    border-color: rgba(231, 76, 60, 0.5);
+    background: rgba(231, 76, 60, 0.15);
+  }
+
+  .error-card h3 {
+    margin: 0 0 6px;
+    color: #c0392b;
+  }
+
+  .error-card pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.82rem;
+    margin: 0;
+    color: #7a1f14;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>LLM-as-a-Judge — Local Test Harness</h1>
+    <p>Manual trigger for <code>run_evaluation()</code> · not the real dashboard</p>
+    <span class="badge">Scratch / Local Only</span>
+  </header>
+
+  <!-- Input card -->
+  <section class="glass input-card">
+    <div class="field">
+      <label for="taskDescription">Task Description</label>
+      <textarea id="taskDescription" placeholder="e.g. Summarize the following support ticket in 2 sentences..."></textarea>
+    </div>
+    <div class="field">
+      <label for="outputText">Output Text</label>
+      <textarea id="outputText" placeholder="Paste the model output you want judged..."></textarea>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="modelId">Model ID</label>
+        <input type="text" id="modelId" placeholder="e.g. gpt-4o-mini" value="gpt-4o-mini">
+      </div>
+      <button id="runBtn" onclick="runEvaluation()">▶ Run Evaluation</button>
+    </div>
+  </section>
+
+  <div id="status"></div>
+
+  <!-- Error card -->
+  <section class="glass error-card" id="errorCard">
+    <h3>⚠ Request failed</h3>
+    <pre id="errorMessage"></pre>
+  </section>
+
+  <!-- Overall score -->
+  <section class="glass overall-card" id="overallCard">
+    <div class="score-label">Overall Score</div>
+    <div class="score-value" id="overallScore">—</div>
+  </section>
+
+  <!-- Individual score cards -->
+  <div class="results-grid">
+    <div class="glass result-card" id="card-accuracy">
+      <h3><span class="dot" id="dot-accuracy"></span>Accuracy</h3>
+      <div class="score" id="score-accuracy">—</div>
+      <div class="reasoning" id="reasoning-accuracy"></div>
+      <div class="judge-model" id="judge-accuracy"></div>
+    </div>
+    <div class="glass result-card" id="card-hallucination">
+      <h3><span class="dot" id="dot-hallucination"></span>Hallucination</h3>
+      <div class="score" id="score-hallucination">—</div>
+      <div class="reasoning" id="reasoning-hallucination"></div>
+      <div class="judge-model" id="judge-hallucination"></div>
+    </div>
+    <div class="glass result-card" id="card-relevance">
+      <h3><span class="dot" id="dot-relevance"></span>Relevance</h3>
+      <div class="score" id="score-relevance">—</div>
+      <div class="reasoning" id="reasoning-relevance"></div>
+      <div class="judge-model" id="judge-relevance"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const ENDPOINT = "http://localhost:8000/test-eval";
+
+  // Maps DOM-id suffix (lowercase) → API response key (Title case from judge_graph.py)
+  const DIMENSIONS = {
+    accuracy:      "Accuracy",
+    hallucination: "Hallucination",
+    relevance:     "Relevance",
+  };
+
+  // Fixed: thresholds now match the judges' actual 0-10 rubric scale
+  // (previously assumed 0-1, which made every real score render green)
+  function colorForScore(score) {
+    if (typeof score !== "number") return "#95a5a6";
+    if (score >= 7.5) return "#2ecc71";
+    if (score >= 5.0) return "#f1c40f";
+    return "#e74c3c";
+  }
+
+  function formatScore(score) {
+    if (typeof score !== "number") return String(score ?? "—");
+    return score.toFixed(1);
+  }
+
+  function resetUI() {
+    document.getElementById("errorCard").style.display = "none";
+    document.getElementById("overallCard").style.display = "none";
+    Object.keys(DIMENSIONS).forEach(d => {
+      document.getElementById(`card-${d}`).style.display = "none";
+    });
+  }
+
+  function showError(message) {
+    document.getElementById("errorCard").style.display = "block";
+    document.getElementById("errorMessage").textContent = message;
+  }
+
+  function renderResult(data) {
+    // Overall score
+    if (data && typeof data.overall_score !== "undefined") {
+      const overallEl = document.getElementById("overallScore");
+      overallEl.textContent = formatScore(data.overall_score);
+      overallEl.style.color = colorForScore(
+        typeof data.overall_score === "number" ? data.overall_score : null
+      );
+      document.getElementById("overallCard").style.display = "block";
+    }
+
+    // Individual scores
+    const individual = data ? data.individual_scores : null;
+    if (individual && typeof individual === "object") {
+      Object.entries(DIMENSIONS).forEach(([domKey, apiKey]) => {
+        const entry = individual[apiKey];   // API returns Title-case: "Accuracy" etc.
+        if (!entry) return;
+        document.getElementById(`card-${domKey}`).style.display = "block";
+        document.getElementById(`score-${domKey}`).textContent = formatScore(entry.score);
+        document.getElementById(`score-${domKey}`).style.color = colorForScore(
+          typeof entry.score === "number" ? entry.score : null
+        );
+        document.getElementById(`dot-${domKey}`).style.background = colorForScore(
+          typeof entry.score === "number" ? entry.score : null
+        );
+        document.getElementById(`reasoning-${domKey}`).textContent = entry.reasoning || "(no reasoning provided)";
+        document.getElementById(`judge-${domKey}`).textContent = entry.judge_model_used
+          ? `Judge model: ${entry.judge_model_used}`
+          : "";
+      });
+    }
+
+    // Fallback: if the shape doesn't match what we expected at all, just dump raw JSON
+    if (
+      (!data || typeof data.overall_score === "undefined") &&
+      (!individual || typeof individual !== "object")
+    ) {
+      showError("Unexpected response shape from /test-eval:\n\n" + JSON.stringify(data, null, 2));
+    }
+  }
+
+  async function runEvaluation() {
+    const taskDescription = document.getElementById("taskDescription").value.trim();
+    const outputText = document.getElementById("outputText").value.trim();
+    const modelId = document.getElementById("modelId").value.trim();
+    const btn = document.getElementById("runBtn");
+    const status = document.getElementById("status");
+
+    if (!taskDescription || !outputText || !modelId) {
+      resetUI();
+      showError("Please fill in task_description, output_text, and model_id before running.");
+      return;
+    }
+
+    resetUI();
+    btn.disabled = true;
+    status.innerHTML = '<span class="spinner"></span>Running evaluation…';
+
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          task_description: taskDescription,
+          output_text: outputText,
+          model_id: modelId,
+        }),
+      });
+
+      let body;
+      const raw = await res.text();
+      try {
+        body = raw ? JSON.parse(raw) : null;
+      } catch (parseErr) {
+        body = null;
+      }
+
+      if (!res.ok) {
+        const detail = (body && body.detail) ? body.detail : (raw || `HTTP ${res.status}`);
+        throw new Error(`Server responded with ${res.status}: ${detail}`);
+      }
+
+      status.textContent = "";
+      renderResult(body);
+    } catch (err) {
+      status.textContent = "";
+      const isNetworkError = err instanceof TypeError;
+      const message = isNetworkError
+        ? `Could not reach ${ENDPOINT}. Is test_server.py running (uvicorn on port 8000)?\n\nRaw error: ${err.message}`
+        : err.message;
+      showError(message);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
