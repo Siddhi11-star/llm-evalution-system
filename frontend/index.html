@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JudgeAI — LLM Evaluation Platform</title>
+  <meta name="description" content="Objective, multi-agent scoring for LLM outputs. Evaluate accuracy, relevance, and hallucination with AI-powered judge agents." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">JudgeAI</span>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="new-eval-btn" id="newEvalBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      New Evaluation
+    </button>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-title">Recent Evaluations</span>
+      <div class="eval-history" id="evalHistory">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="model-badge">
+        <div class="status-dot"></div>
+        <span>Groq · Llama 3.3-70B</span>
+      </div>
+      <div class="model-badge-secondary">Gemini 2.0 Flash fallback</div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main" id="main">
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="topbar-center">
+        <span class="page-title" id="pageTitle">LLM Evaluation</span>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" title="History" id="historyBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Landing / Eval form view -->
+    <div class="content-area" id="contentArea">
+      <!-- Welcome screen -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-inner">
+          <div class="welcome-logo">
+            <div class="welcome-logo-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <h1 class="welcome-title">LLM Judge Evaluation</h1>
+          <p class="welcome-subtitle">Objective, multi-agent scoring for LLM outputs.<br/>Evaluate accuracy, relevance, and hallucination detection.</p>
+
+          <div class="agent-pills">
+            <div class="agent-pill accuracy">
+              <div class="pill-dot"></div>
+              Accuracy
+            </div>
+            <div class="agent-pill relevance">
+              <div class="pill-dot"></div>
+              Relevance
+            </div>
+            <div class="agent-pill hallucination">
+              <div class="pill-dot"></div>
+              Hallucination
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results area (populated after evaluation) -->
+      <div class="results-area" id="resultsArea" style="display:none;">
+        <!-- Results injected by JS -->
+      </div>
+    </div>
+
+    <!-- Input panel -->
+    <div class="input-panel" id="inputPanel">
+      <div class="input-container">
+        <div class="input-fields">
+          <!-- Model selector -->
+          <div class="model-row">
+            <div class="select-wrapper">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              <select id="modelSelect" class="model-select">
+                <option value="gpt-4o">GPT-4o</option>
+                <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
+                <option value="claude-3-opus">Claude 3 Opus</option>
+                <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+                <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                <option value="llama-3.3-70b">Llama 3.3-70B</option>
+                <option value="llama-3.1-8b">Llama 3.1-8B</option>
+                <option value="mistral-7b">Mistral 7B</option>
+                <option value="custom">Custom Model ID</option>
+              </select>
+            </div>
+            <div class="char-count" id="charCount">0 / 4000</div>
+          </div>
+
+          <!-- Task description -->
+          <div class="textarea-group">
+            <label class="textarea-label">Task / Prompt</label>
+            <textarea
+              id="taskInput"
+              class="eval-textarea task-textarea"
+              placeholder="What was the task or prompt given to the LLM?"
+              rows="3"
+              maxlength="2000"
+            ></textarea>
+          </div>
+
+          <!-- LLM Output -->
+          <div class="textarea-group">
+            <label class="textarea-label">LLM Output</label>
+            <textarea
+              id="outputInput"
+              class="eval-textarea output-textarea"
+              placeholder="Paste the LLM's response here…"
+              rows="4"
+              maxlength="2000"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Submit row -->
+        <div class="submit-row">
+          <div class="submit-hints">
+            <span class="hint-tag">Ctrl + Enter to submit</span>
+          </div>
+          <button class="submit-btn" id="submitBtn">
+            <span id="submitBtnText">Run Evaluation</span>
+            <div class="submit-spinner" id="submitSpinner" style="display:none;"></div>
+            <svg id="submitIcon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Results Detail Modal -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Evaluation Details</h2>
+        <button class="modal-close" id="modalClose">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
