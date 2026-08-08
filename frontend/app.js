@@ -82,8 +82,13 @@ async function runEvaluation(taskDescription, outputText, modelId) {
 
     return await response.json();
   } catch (err) {
-    // If backend not running, return mock data for demo purposes
-    if (err.message.includes('fetch') || err.message.includes('Failed')) {
+    // If backend not running, return mock data for demo purposes.
+    // TypeError is thrown by all browsers for network / CORS failures (e.g. "Failed to fetch",
+    // "NetworkError when attempting to fetch resource", "Load failed").
+    // We also guard against err.message being undefined on non-standard error objects.
+    const msg = err?.message ?? '';
+    const isNetworkError = err instanceof TypeError || msg.includes('fetch') || msg.includes('Failed') || msg.includes('Load failed');
+    if (isNetworkError) {
       return generateMockResult(taskDescription, outputText, modelId);
     }
     throw err;

@@ -67,4 +67,3 @@ python -m backend.db.seed
 - [ ] Remaining judge agents (Reasoning, Safety, Style)
 - [ ] Advisor Agent
 - [ ] Stretch: custom rubrics, adversarial test generation, CI/CD gating
-test

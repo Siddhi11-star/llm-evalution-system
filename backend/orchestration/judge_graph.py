@@ -1,6 +1,6 @@
 # backend/orchestration/judge_graph.py
 
-import operator
+import json
 from typing import TypedDict, Annotated
 from langgraph.graph import StateGraph, START, END
 
@@ -51,7 +51,9 @@ def aggregator_node(state: JudgeState) -> dict:
     valid = {name: scores[name] for name in scores if name in RUBRIC_WEIGHTS}
     total_weight = sum(RUBRIC_WEIGHTS[name] for name in valid)
     weighted_sum = sum(
-        valid[name]["score"] * RUBRIC_WEIGHTS[name] for name in valid
+        # Clamp each score to [0, 10] so a misbehaving LLM can't corrupt the overall
+        max(0.0, min(10.0, valid[name]["score"])) * RUBRIC_WEIGHTS[name]
+        for name in valid
     )
     overall = weighted_sum / total_weight if total_weight else 0.0
     return {"overall_score": round(overall, 2)}
@@ -111,5 +113,4 @@ if __name__ == "__main__":
         ),
         model_id="test-model-id",
     )
-    import json
     print(json.dumps(output, indent=2))

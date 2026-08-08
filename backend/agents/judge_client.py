@@ -42,10 +42,14 @@ def _extract_json(text: str) -> dict:
     """
     Judge models sometimes wrap JSON in markdown code fences or add stray text.
     This strips fences and pulls out the first {...} block it can find.
+    Uses re.MULTILINE so ^ and $ match line boundaries, not just string edges.
     """
     text = text.strip()
-    text = re.sub(r"^```(?:json)?\s*", "", text)
-    text = re.sub(r"\s*```$", "", text)
+    # Strip opening fence (e.g. ```json or ```) anywhere at the start of a line
+    text = re.sub(r"^```(?:json)?\s*$", "", text, flags=re.MULTILINE)
+    # Strip closing fence anywhere at the end of a line
+    text = re.sub(r"^```\s*$", "", text, flags=re.MULTILINE)
+    text = text.strip()
 
     match = re.search(r"\{.*\}", text, re.DOTALL)
     if not match:
