@@ -1,69 +1,42 @@
-# LLM-as-a-Judge Evaluation System
+# JudgeLens — LLM Evaluation Suite
 
-AI-powered evaluation platform for LLM outputs — objective, multi-agent scoring plus an Advisor Agent that recommends the best-suited LLM(s) for a given task based on historical evaluation data.
+AI-powered platform for objective, multi-agent scoring of LLM outputs.
 
-## Problem
-
-Teams building LLM products lack a fast, objective way to check output quality. Manual review is slow, model comparisons stay subjective, and once multiple models are in play there's no clear way to know which one to use for a given task. This platform judges outputs across multiple rubrics *and* recommends which model to use next time.
-
-## Tech Stack
-
-- **Backend:** Python, FastAPI
-- **Orchestration:** LangGraph / CrewAI (parallel judge agents + meta-aggregator)
-- **Database:** PostgreSQL + pgvector (eval history + embeddings for task similarity search)
-- **Frontend:** React (dashboard — model comparison, trend charts, reports)
-- **Judge Models:** Groq API (Llama 3.1/3.3, Gemma), Google Gemini API, Hugging Face Inference API, Ollama (local fallback)
-
-## Architecture
+## Project Structure
 
 ```
-backend/
-├── agents/          # Judge agents (Accuracy, Relevance, Reasoning, Hallucination, Safety, Style)
-├── orchestration/   # LangGraph pipeline + meta-aggregator
-├── advisor/         # Advisor Agent (model recommendation)
-├── api/             # FastAPI routes
-├── db/              # Models, migrations, pgvector setup
-└── tests/
-frontend/            # React dashboard
+frontend/
+  public/assets/      ← Screen preview images (design reference)
+  src/
+    pages/            ← One HTML file per screen (Stitch exports, reorganised)
+    components/       ← Shared HTML partials extracted from pages
+backend/              ← Python / FastAPI app (coming soon)
+docs/                 ← Design system notes and token references
 ```
 
-## Setup
+## Pages
 
-```bash
-# Clone
-git clone https://github.com/Hitarth-Saparia/llm-judge-eval-system.git
-cd llm-judge-eval-system
+| File | Screen |
+|------|--------|
+| `pages/landing.html` | Marketing / landing page |
+| `pages/login.html` | Login / auth |
+| `pages/dashboard.html` | Dashboard overview |
+| `pages/judge-agents.html` | Judge agents status |
+| `pages/advisor-agent.html` | Advisor agent (free plan locked) |
+| `pages/evaluation-run-detail.html` | Evaluation run detail |
+| `pages/billing.html` | Billing & usage settings |
+| `pages/model-providers.html` | Model providers settings |
 
-# Create and activate a virtual environment (Python 3.11+ recommended)
-python -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
+## Shared Components
 
-# Install dependencies
-# NOTE: requirements.txt lives in backend/, not the repo root
-pip install -r backend/requirements.txt
+| File | Used on |
+|------|---------|
+| `components/sidebar-nav.html` | All app pages (dashboard → billing) |
+| `components/top-nav.html` | Landing page, evaluation-run-detail |
+| `components/chatbot-widget.html` | All pages (two variants — see file comments) |
+| `components/footer.html` | Landing page only |
 
-# Create .env at the repo root and fill in your API keys
-# (required keys: DATABASE_URL, GROQ_API_KEY, GEMINI_API_KEY)
-cp .env.example .env              # or create .env manually — see .env.example for the template
+## Design System
 
-# Spin up Postgres + pgvector
-docker-compose up --build
-
-# Seed the database (models + rubrics tables)
-python -m backend.db.seed
-```
-
-## Team
-
-- **Hitarth Saparia** — Judge Agents, Orchestration & Data
-- **Siddhi Borawake** — API, Dashboard & Advisor Agent
-
-## Roadmap
-
-- [ ] Core judge agents (Accuracy, Hallucination, Relevance)
-- [ ] LangGraph orchestration + meta-aggregator
-- [ ] Postgres schema + eval history storage
-- [ ] React dashboard (basic)
-- [ ] Remaining judge agents (Reasoning, Safety, Style)
-- [ ] Advisor Agent
-- [ ] Stretch: custom rubrics, adversarial test generation, CI/CD gating
+See `docs/design-system-judgelens.md` and `docs/design-system-auralis.md` for
+full color palettes, typography scales, spacing tokens, and component specs.
