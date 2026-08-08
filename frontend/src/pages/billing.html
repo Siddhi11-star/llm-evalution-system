@@ -1,12 +1,13 @@
-<!DOCTYPE html><html class="h-full" lang="en" style=""><head>
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Billing Settings - JudgeLens</title>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<!-- Google Fonts -->
+<!-- Google Fonts Preconnect -->
 <link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+<!-- Google Fonts & Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -115,51 +116,15 @@
 </head>
 <body class="bg-background text-on-surface h-full flex antialiased">
 <!-- SideNavBar -->
-<nav class="hidden md:flex flex-col bg-surface-container-low border-r border-outline-variant docked left-0 h-full w-64 py-unit-lg gap-unit-md flex-shrink-0">
-<div class="px-unit-lg mb-unit-lg flex items-center gap-unit-sm"><div class="w-8 h-8 bg-primary rounded-DEFAULT flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[20px]" data-weight="fill">gavel</span></div><div><h1 class="font-headline-sm text-headline-sm font-bold text-primary">JudgeLens</h1><p class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</p></div></div>
-<div class="flex-1 flex flex-col gap-unit-xs px-unit-sm overflow-y-auto">
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">dashboard</span>
-                Overview
-            </a>
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">play_circle</span>
-                Run Evaluation
-            </a>
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">gavel</span>
-                Judge Agents
-            </a>
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">psychology</span>
-                Advisor Agent
-            </a>
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">dns</span>
-                Model Providers
-            </a>
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT bg-surface-container-high text-primary font-bold border-l-4 border-secondary font-label-md text-label-md scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]" data-weight="fill">payments</span>
-                Billing
-            </a>
-</div>
-<div class="mt-auto flex flex-col gap-unit-xs px-unit-sm pt-unit-md border-t border-outline-variant">
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">settings</span>
-                Settings
-            </a>
-<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">help</span>
-                Support
-            </a>
-</div>
-</nav>
+<include src="components/sidebar-nav.html"></include>
 <!-- Main Content -->
 <main class="flex-1 overflow-y-auto w-full">
 <!-- TopAppBar Mobile Fallback -->
 <header class="md:hidden flex justify-between items-center w-full px-margin-page py-unit-sm bg-surface border-b border-outline-variant">
 <h1 class="font-headline-md text-headline-md font-bold text-primary">JudgeLens</h1>
-<button class="material-symbols-outlined text-primary">menu</button>
+<button class="text-primary hover:opacity-85">
+    <span class="material-symbols-outlined">menu</span>
+</button>
 </header>
 <div class="max-w-max-width mx-auto px-margin-page py-unit-xl flex flex-col gap-unit-lg">
 <header>
@@ -284,33 +249,5 @@
 </div>
 </main>
 <!-- Floating Chatbot Widget -->
-<div class="fixed bottom-margin-page right-margin-page z-50 flex flex-col items-end gap-unit-md">
-    <!-- Chat Panel (Hidden by default, would be toggled by JS in a real app) -->
-    <div class="hidden flex flex-col w-[360px] h-[420px] bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden">
-        <!-- Header -->
-        <div class="bg-primary p-unit-md flex justify-between items-center">
-            <h3 class="text-on-primary font-headline-sm text-headline-sm">Evaluation Advisor</h3>
-            <button class="material-symbols-outlined text-on-primary">close</button>
-        </div>
-        <!-- Message List -->
-        <div class="flex-1 overflow-y-auto p-unit-md flex flex-col gap-unit-sm">
-            <div class="bg-surface-container p-unit-sm rounded-lg max-w-[80%] self-start">
-                <p class="text-body-sm">Hello! How can I help you with your evaluations today?</p>
-            </div>
-        </div>
-        <!-- Input Bar -->
-        <div class="p-unit-sm border-t border-outline-variant bg-surface flex gap-unit-xs">
-            <input type="text" placeholder="Ask a question..." class="flex-1 bg-surface-container-low border-none rounded-full px-4 py-2 text-body-sm focus:ring-1 focus:ring-secondary">
-            <button class="bg-secondary text-on-secondary p-2 rounded-full flex items-center justify-center">
-                <span class="material-symbols-outlined text-[20px]">send</span>
-            </button>
-        </div>
-    </div>
-    <!-- FAB (56px circular) -->
-    <button class="w-[56px] h-[56px] bg-secondary text-on-secondary rounded-full shadow-lg hover:scale-105 transition-transform flex items-center justify-center group">
-        <span class="material-symbols-outlined text-[24px]">chat_bubble</span>
-    </button>
-</div>
-
-
+<include src="components/chatbot-widget.html"></include>
 </body></html>

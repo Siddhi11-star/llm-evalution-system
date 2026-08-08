@@ -1,14 +1,13 @@
-<!DOCTYPE html><html lang="en" style=""><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>JudgeLens - Login</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -21,40 +20,40 @@
             extend: {
               "colors": {
                       "outline-variant": "#cfc4c5",
-                      "accent-purple": "#4b41e1", /* Adjusted accent */
+                      "accent-purple": "#4b41e1",
                       "inverse-primary": "#c6c6c6",
                       "secondary-container": "#e1dfdf",
                       "primary": "#000000",
-                      "border-subtle": "#e5e7eb", /* Adjusted border */
+                      "border-subtle": "#e5e7eb",
                       "on-primary-fixed": "#1b1b1b",
                       "surface-dim": "#dadada",
                       "surface-container-highest": "#e2e2e2",
                       "on-error-container": "#93000a",
                       "on-tertiary": "#ffffff",
-                      "accent-indigo": "#4b41e1", /* Adjusted accent */
+                      "accent-indigo": "#4b41e1",
                       "primary-fixed": "#e2e2e2",
                       "primary-fixed-dim": "#c6c6c6",
                       "tertiary-fixed": "#e2e2e2",
-                      "on-surface": "#111827", /* Adjusted dark text */
-                      "accent-emerald": "#4b41e1", /* Adjusted accent */
+                      "on-surface": "#111827",
+                      "accent-emerald": "#4b41e1",
                       "surface-bright": "#ffffff",
                       "inverse-on-surface": "#f1f1f1",
                       "error-container": "#ffdad6",
-                      "on-background": "#111827", /* Adjusted dark text */
-                      "background": "#ffffff", /* Clean white */
+                      "on-background": "#111827",
+                      "background": "#ffffff",
                       "tertiary": "#000000",
                       "on-secondary-fixed-variant": "#464747",
                       "on-error": "#ffffff",
                       "outline": "#9ca3af",
-                      "card-fill": "#ffffff", /* Clean white */
-                      "background-warm": "#ffffff", /* Clean white */
+                      "card-fill": "#ffffff",
+                      "background-warm": "#ffffff",
                       "tertiary-fixed-dim": "#c6c6c6",
                       "on-tertiary-fixed": "#1b1b1b",
                       "error": "#ba1a1a",
                       "surface-container-high": "#e8e8e8",
                       "glass-dark": "rgba(20, 20, 20, 0.6)",
                       "on-secondary-fixed": "#1b1c1c",
-                      "on-secondary-container": "#4b5563", /* Adjusted secondary text */
+                      "on-secondary-container": "#4b5563",
                       "panel-fill": "#ffffff",
                       "surface-container": "#f3f4f6",
                       "on-primary": "#ffffff",
@@ -71,14 +70,14 @@
                       "secondary": "#6b7280",
                       "on-secondary": "#ffffff",
                       "surface-tint": "#000000",
-                      "on-surface-variant": "#4b5563", /* Adjusted secondary text */
+                      "on-surface-variant": "#4b5563",
                       "on-tertiary-container": "#848484",
                       "on-primary-container": "#848484",
                       "surface-container-low": "#ffffff",
                       "tertiary-container": "#1b1b1b"
               },
               "borderRadius": {
-                      "DEFAULT": "0.25rem", /* Sharp corners */
+                      "DEFAULT": "0.25rem",
                       "lg": "0.25rem",
                       "xl": "0.25rem",
                       "full": "0.25rem",
@@ -90,14 +89,14 @@
                       "section_gap_desktop": "180px",
                       "unit_base": "8px",
                       "section_gap_mobile": "80px",
-                      "padding_card": "2rem" /* Adjusted padding */
+                      "padding_card": "2rem"
               },
               "fontFamily": {
                       "h1-mobile": ["Geist", "sans-serif"],
                       "caption": ["Inter", "sans-serif"],
+                      "label-caps": ["Inter", "sans-serif"],
                       "h3": ["Geist", "sans-serif"],
                       "h2": ["Geist", "sans-serif"],
-                      "label-caps": ["Inter", "sans-serif"],
                       "h1": ["Geist", "sans-serif"],
                       "body-lg": ["Inter", "sans-serif"],
                       "body-md": ["Inter", "sans-serif"]
@@ -113,7 +112,7 @@
                       "body-md": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }]
               },
               "boxShadow": {
-                      "card": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)" /* Dashboard shadow */
+                      "card": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
               }
             },
           },
@@ -130,12 +129,12 @@
     <span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">gavel</span>
   </div>
   <div class="text-center">
-    <h1 class="font-h3 text-h3 text-primary mb-1">JudgeLens</h1>
+    <p class="font-h3 text-h3 text-primary mb-1">JudgeLens</p>
     <p class="font-body-md text-body-md text-on-surface-variant">AI Evaluation Infrastructure</p>
   </div>
 </div></div>
 <!-- Login Form -->
-<form class="w-full space-y-5 flex-col" onsubmit="event.preventDefault();">
+<form class="w-full space-y-5 flex-col" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
 <div class="space-y-4">
 <!-- Email Field -->
 <div class="relative">
@@ -143,7 +142,7 @@
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="mail">mail</span>
 </div>
-<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface placeholder-on-surface-variant/60 focus:ring-1 focus:ring-primary focus:border-primary transition-shadow duration-200" id="email" name="email" placeholder="Email address" required="" type="email">
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface placeholder-on-surface-variant/60 focus:ring-1 focus:ring-primary focus:border-primary transition-shadow duration-200" id="email" name="email" placeholder="Email address" required type="email">
 </div>
 <!-- Password Field -->
 <div class="relative">
@@ -151,7 +150,7 @@
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="key">key</span>
 </div>
-<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface placeholder-on-surface-variant/60 focus:ring-1 focus:ring-primary focus:border-primary transition-shadow duration-200" id="password" name="password" placeholder="Password" required="" type="password">
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface placeholder-on-surface-variant/60 focus:ring-1 focus:ring-primary focus:border-primary transition-shadow duration-200" id="password" name="password" placeholder="Password" required type="password">
 </div>
 </div>
 <!-- Utilities -->
@@ -164,7 +163,7 @@
 </div>
 <!-- Primary Action -->
 <button class="w-full py-2.5 bg-primary text-on-primary rounded font-body-md text-body-md font-medium hover:bg-inverse-surface active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-2 group" type="submit">
-<span class="">Initialize Session</span>
+<span>Initialize Session</span>
 <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
 </button>
 </form>
@@ -176,21 +175,21 @@
 </div>
 <!-- SSO Options -->
 <div class="w-full space-y-3 flex-col">
-<button class="w-full py-2.5 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface hover:bg-surface-variant active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-3" type="button">
-<img alt="Google" class="w-4 h-4 opacity-80" data-alt="A minimalist, highly detailed SVG icon representing the Google logo in a sleek, monochrome light-mode UI style. The icon is clean, sharp, and perfectly balanced, intended for a professional software dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW7KdsUwqFW1Wrr-ua98cAO2FPH3efJ_6Ew3mRSqCxjaQX3SC9i0NYwg26o7hR903QvF0_4iIi1dGi_1JS_D5QVBAhdaMYQ6Eik_jiJYFBoyQCbscZdNFr2hoR9BOHHg8T-4KVq8mKr0pyLuxBgajKKFUpym-NN7Qskgdm4sM07gZ2r41dyyTCCGCVtGk7lqRXa1k2WtKziaOnUufSAEkI0BhBYv8Fb7M6Y5t_EUU0FxUXNmZHDy7x4A">
-<span class="">Continue with Google</span>
+<button class="w-full py-2.5 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface hover:bg-surface-variant active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-3" type="button" onclick="window.location.href='dashboard.html';">
+<img alt="Google" class="w-4 h-4 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW7KdsUwqFW1Wrr-ua98cAO2FPH3efJ_6Ew3mRSqCxjaQX3SC9i0NYwg26o7hR903QvF0_4iIi1dGi_1JS_D5QVBAhdaMYQ6Eik_jiJYFBoyQCbscZdNFr2hoR9BOHHg8T-4KVq8mKr0pyLuxBgajKKFUpym-NN7Qskgdm4sM07gZ2r41dyyTCCGCVtGk7lqRXa1k2WtKziaOnUufSAEkI0BhBYv8Fb7M6Y5t_EUU0FxUXNmZHDy7x4A">
+<span>Continue with Google</span>
 </button>
-<button class="w-full py-2.5 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface hover:bg-surface-variant active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-3" type="button">
-<img alt="GitHub" class="w-4 h-4 opacity-80" data-alt="A minimal, sharp SVG icon representing the GitHub cat logo. Designed for a premium light-mode tech dashboard, the icon uses deep charcoal tones and crisp vector lines, emitting a highly technical and developer-focused aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYy1nGG9Jw__20weUPx1amz4ZedYL4KXLd5AKiDi66FEv0Lj4lRRgUbSmqa0UvOH8qTa4jQ0DoMus5W3wRzWeDm2C46GbH4FXZICz-G5ptsZbkiv_p3M942ilVxY8Qe6X2OmO0kZxzlPZ3f2E95HsA18BNIe7_4Cyr_H3UCCAU8lQxNtrGdIwdkqJmlsCidmgrruiQAHPOogALOLwAZKebUt7PL_BiBbZ0lhzEZ30RCVuLDKXns9vbSg">
-<span class="">Continue with GitHub</span>
+<button class="w-full py-2.5 bg-surface-container-lowest border border-border-subtle rounded font-body-md text-body-md text-on-surface hover:bg-surface-variant active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-3" type="button" onclick="window.location.href='dashboard.html';">
+<img alt="GitHub" class="w-4 h-4 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYy1nGG9Jw__20weUPx1amz4ZedYL4KXLd5AKiDi66FEv0Lj4lRRgUbSmqa0UvOH8qTa4jQ0DoMus5W3wRzWeDm2C46GbH4FXZICz-G5ptsZbkiv_p3M942ilVxY8Qe6X2OmO0kZxzlPZ3f2E95HsA18BNIe7_4Cyr_H3UCCAU8lQxNtrGdIwdkqJmlsCidmgrruiQAHPOogALOLwAZKebUt7PL_BiBbZ0lhzEZ30RCVuLDKXns9vbSg">
+<span>Continue with GitHub</span>
 </button>
 </div>
 </div>
 <!-- Footer Links -->
 <div class="mt-6 text-center flex flex-col gap-2 w-full items-center">
 <p class="font-caption text-caption text-on-surface-variant">
-                By authenticating, you accept our <a class="text-[#4b41e1] hover:underline" href="#">Service Terms</a> and <a class="text-[#4b41e1] hover:underline" href="#">Privacy Protocol</a>.
-            </p>
+    By authenticating, you accept our <a class="text-[#4b41e1] hover:underline" href="#">Service Terms</a> and <a class="text-[#4b41e1] hover:underline" href="#">Privacy Protocol</a>.
+</p>
 </div>
 </main>
 

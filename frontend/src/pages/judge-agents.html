@@ -1,12 +1,13 @@
-<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Judge Agents - JudgeLens</title>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<!-- Google Fonts: Inter & Geist -->
+<!-- Google Fonts Preconnect -->
 <link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+<!-- Google Fonts & Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -122,62 +123,7 @@
 </head>
 <body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md h-screen flex overflow-hidden workstation-gradient">
 <!-- SideNavBar (Shared Component) -->
-<nav class="fixed left-0 top-0 h-full flex flex-col py-unit-lg gap-unit-md bg-surface-container-low border-r border-outline-variant w-64 z-40">
-<!-- Header -->
-<div class="px-unit-lg pb-unit-md mb-unit-sm"><div class="flex items-center gap-3">
-  <div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center">
-    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
-  </div>
-  <div>
-    <h1 class="font-headline-sm text-headline-sm font-bold text-primary">JudgeLens</h1>
-    <p class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</p>
-  </div>
-</div></div>
-<!-- Main Navigation -->
-<div class="flex-1 overflow-y-auto px-unit-md space-y-1">
-<!-- Inactive -->
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">dashboard</span>
-<span class="">Overview</span>
-</a>
-<!-- Inactive -->
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">play_circle</span>
-<span class="">Run Evaluation</span>
-</a>
-<!-- Active -->
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md bg-surface-container-high text-primary font-bold border-l-4 border-secondary scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
-<span class="">Judge Agents</span>
-</a>
-<!-- Inactive -->
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">psychology</span>
-<span class="">Advisor Agent</span>
-</a>
-<!-- Inactive -->
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">dns</span>
-<span class="">Model Providers</span>
-</a>
-<!-- Inactive -->
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">payments</span>
-<span class="">Billing</span>
-</a>
-</div>
-<!-- Footer Navigation -->
-<div class="px-unit-md mt-auto space-y-1 pt-unit-md border-t border-outline-variant mx-unit-md">
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">settings</span>
-<span class="">Settings</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">help</span>
-<span class="">Support</span>
-</a>
-</div>
-</nav>
+<include src="components/sidebar-nav.html"></include>
 <!-- Main Content Area -->
 <main class="flex-1 ml-64 h-full overflow-y-auto">
 <div class="max-w-max-width mx-auto p-margin-page">
@@ -306,7 +252,5 @@
 </div>
 </main>
 <!-- Floating Chatbot Widget -->
-<div class="fixed bottom-margin-page right-margin-page z-50"><div class="flex flex-col items-end gap-4"><div class="w-[360px] h-[420px] bg-surface-container-lowest rounded-xl shadow-[0px_8px_32px_rgba(0,0,0,0.2)] border border-outline-variant flex flex-col overflow-hidden"><div class="bg-primary p-4 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-on-primary">psychology</span><span class="font-headline-sm text-headline-sm text-on-primary">Evaluation Advisor</span></div><button class="text-on-primary hover:opacity-80"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-y-auto p-4 space-y-4"><div class="flex gap-2 items-start"><div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-[18px]">smart_toy</span></div><div class="bg-surface-container-low p-3 rounded-lg text-body-sm">Hello! I'm your Evaluation Advisor. How can I help you configure your Judge Agents today?</div></div></div><div class="p-4 border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-2 bg-surface-container px-3 py-2 rounded-full"><input type="text" placeholder="Ask a question..." class="bg-transparent border-none focus:ring-0 text-body-sm flex-1"><button class="text-primary"><span class="material-symbols-outlined">send</span></button></div></div></div><button class="bg-primary text-on-primary w-14 h-14 rounded-full shadow-[0px_4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[24px]">forum</span></button></div></div>
-
-
+<include src="components/chatbot-widget.html"></include>
 </body></html>

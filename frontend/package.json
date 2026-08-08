@@ -1,0 +1,8 @@
+{
+  "name": "judgelens-frontend",
+  "version": "1.0.0",
+  "description": "JudgeLens static HTML pages with include capabilities",
+  "scripts": {
+    "build:html": "node build.js"
+  }
+}

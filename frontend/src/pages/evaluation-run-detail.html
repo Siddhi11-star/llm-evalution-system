@@ -1,11 +1,16 @@
-<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Evaluation Run Detail - JudgeLens</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+<!-- Google Fonts & Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -132,44 +137,11 @@
             top: 0;
             border-radius: 1px;
         }
-        
-        /* Floating Chatbot */
-        #chatbot-widget {
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #chatbot-widget.collapsed {
-            transform: translateY(calc(100% - 64px));
-        }
     </style>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col">
 <!-- TopNavBar -->
-<nav class="bg-surface dark:bg-inverse-surface w-full top-0 border-b border-outline-variant dark:border-outline z-50 sticky">
-<div class="flex justify-between items-center w-full px-margin-page py-unit-sm max-w-max-width mx-auto">
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2">
-  <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
-    <span class="material-symbols-outlined text-on-primary text-[20px] filled">gavel</span>
-  </div>
-  <span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">JudgeLens</span>
-</div>
-<div class="hidden md:flex gap-4">
-<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Evaluations</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Leaderboard</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Advisor</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Docs</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Pricing</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="text-on-surface-variant text-label-md font-label-md hover:text-primary transition-colors">Sign In</button>
-<button class="bg-primary text-on-primary px-4 py-2 rounded-lg text-label-md font-label-md hover:opacity-90 transition-opacity">Get Started</button>
-<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
-<img alt="User avatar with plan badge" class="w-full h-full object-cover" data-alt="A small, professional user avatar portrait of an AI researcher. The image should be a close-up headshot with neutral lighting, set against a solid light grey background. The style is modern, realistic, and highly detailed, conveying a sense of expertise and analytical focus suited for a technical platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPtkSplk6XGM3I_gVwHtUSOI2BUKPATiBY6b1W2Bt0VJ_uOzrS34JQgP2EiIOHJsi1e_ode-rnqtneVYr7XHFTfvNyYmkJyJLO2gRD9NcekkxGf1UZYBJsbz1VtrCXExXTdJtAVaOpTuy2U-_RFd2IBdoBoDruNcMegf24arH3C_FI0-3OBiDPx_T34okZthpPwTc5-N1zqxNdM581I_Dy-jY8SKM9okOk5RB458sfkXZ62FQhHE9XIA">
-</div>
-</div>
-</div>
-</nav>
+<include src="components/top-nav.html"></include>
 <!-- Main Content -->
 <main class="flex-grow w-full max-w-max-width mx-auto px-margin-page py-unit-xl flex flex-col gap-unit-xl">
 <!-- Header / Composite Score -->
@@ -283,61 +255,5 @@
 </section>
 </main>
 <!-- Floating Chatbot Widget -->
-<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
-    <!-- Expansion Panel -->
-    <div id="chatbot-panel" class="hidden w-[360px] h-[420px] bg-surface-bright border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col">
-        <!-- Header -->
-        <div class="bg-surface border-b border-outline-variant p-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-secondary">smart_toy</span>
-                <span class="text-headline-sm font-headline-sm text-primary">Evaluation Advisor</span>
-            </div>
-            <button onclick="document.getElementById('chatbot-panel').classList.add('hidden')" class="text-on-surface-variant hover:text-primary">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <!-- Chat Body -->
-        <div class="flex-grow p-4 overflow-y-auto bg-surface-container-lowest flex flex-col gap-4">
-            <div class="flex gap-2">
-                <div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center flex-shrink-0">
-                    <span class="material-symbols-outlined text-on-secondary-fixed text-[16px]">smart_toy</span>
-                </div>
-                <div class="bg-surface p-3 rounded-lg rounded-tl-none border border-outline-variant text-body-sm font-body-sm text-on-surface">
-                    I noticed a high variance in the Reasoning scores. Would you like me to analyze the top 5 failing prompts to identify the pattern?
-                </div>
-            </div>
-            <div class="flex gap-2 flex-row-reverse">
-                <div class="bg-primary text-on-primary p-3 rounded-lg rounded-tr-none text-body-sm font-body-sm">
-                    Yes, please highlight the common failure modes.
-                </div>
-            </div>
-        </div>
-        <!-- Input Area -->
-        <div class="p-3 border-t border-outline-variant bg-surface-bright">
-            <div class="relative">
-                <input class="w-full bg-surface-container border border-outline-variant rounded-lg pl-3 pr-10 py-2 text-body-sm font-body-sm focus:border-secondary focus:ring-0 outline-none placeholder:text-on-surface-variant" placeholder="Ask about this evaluation run..." type="text">
-                <button class="absolute right-2 top-1/2 -translate-y-1/2 text-secondary hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-[20px]">send</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- FAB -->
-    <button onclick="document.getElementById('chatbot-panel').classList.toggle('hidden')" class="w-[56px] h-[56px] rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity">
-        <span class="material-symbols-outlined text-[24px]">smart_toy</span>
-    </button>
-</div>
-<script>
-        // Simple logic to toggle the expand/collapse icon
-        document.querySelector('#chatbot-widget .cursor-pointer').addEventListener('click', function() {
-            const icon = document.getElementById('chat-toggle-icon');
-            if (document.getElementById('chatbot-widget').classList.contains('collapsed')) {
-                icon.textContent = 'expand_less';
-            } else {
-                icon.textContent = 'expand_more';
-            }
-        });
-    </script>
-
-
+<include src="components/chatbot-widget.html"></include>
 </body></html>

@@ -1,13 +1,16 @@
-<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Model Providers - JudgeLens</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts Preconnect -->
 <link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+<!-- Google Fonts & Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -80,145 +83,99 @@
               },
               "fontFamily": {
                       "body-lg": [
-                              "Inter"
+                               "Inter"
                       ],
                       "body-sm": [
-                              "Inter"
+                               "Inter"
                       ],
                       "headline-md": [
-                              "Geist"
+                               "Geist"
                       ],
                       "headline-sm": [
-                              "Geist"
+                               "Geist"
                       ],
                       "display-lg": [
-                              "Geist"
+                               "Geist"
                       ],
                       "mono-sm": [
-                              "Geist"
+                               "Geist"
                       ],
                       "body-md": [
-                              "Inter"
+                               "Inter"
                       ],
                       "label-md": [
-                              "Geist"
+                               "Geist"
                       ]
               },
               "fontSize": {
                       "body-lg": [
-                              "16px",
-                              {
-                                      "lineHeight": "24px",
-                                      "fontWeight": "400"
-                              }
+                               "16px",
+                               {
+                                       "lineHeight": "24px",
+                                       "fontWeight": "400"
+                               }
                       ],
                       "body-sm": [
-                              "13px",
-                              {
-                                      "lineHeight": "18px",
-                                      "fontWeight": "400"
-                              }
+                               "13px",
+                               {
+                                       "lineHeight": "18px",
+                                       "fontWeight": "400"
+                               }
                       ],
                       "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "32px",
-                                      "letterSpacing": "-0.01em",
-                                      "fontWeight": "600"
-                              }
+                               "24px",
+                               {
+                                       "lineHeight": "32px",
+                                       "letterSpacing": "-0.01em",
+                                       "fontWeight": "600"
+                               }
                       ],
                       "headline-sm": [
-                              "18px",
-                              {
-                                      "lineHeight": "24px",
-                                      "fontWeight": "600"
-                              }
+                               "18px",
+                               {
+                                       "lineHeight": "24px",
+                                       "fontWeight": "600"
+                               }
                       ],
                       "display-lg": [
-                              "48px",
-                              {
-                                      "lineHeight": "56px",
-                                      "letterSpacing": "-0.02em",
-                                      "fontWeight": "700"
-                              }
+                               "48px",
+                               {
+                                       "lineHeight": "56px",
+                                       "letterSpacing": "-0.02em",
+                                       "fontWeight": "700"
+                               }
                       ],
                       "mono-sm": [
-                              "12px",
-                              {
-                                      "lineHeight": "18px",
-                                      "fontWeight": "400"
-                              }
+                               "12px",
+                               {
+                                       "lineHeight": "18px",
+                                       "fontWeight": "400"
+                               }
                       ],
                       "body-md": [
-                              "14px",
-                              {
-                                      "lineHeight": "20px",
-                                      "fontWeight": "400"
-                              }
+                               "14px",
+                               {
+                                       "lineHeight": "20px",
+                                       "fontWeight": "400"
+                               }
                       ],
                       "label-md": [
-                              "12px",
-                              {
-                                      "lineHeight": "16px",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "600"
-                              }
+                               "12px",
+                               {
+                                       "lineHeight": "16px",
+                                       "letterSpacing": "0.05em",
+                                       "fontWeight": "600"
+                               }
                       ]
               }
       },
           },
         }
-      </script>
+       </script>
 </head>
 <body class="bg-background text-on-surface font-body-lg min-h-screen flex selection:bg-secondary-fixed selection:text-on-secondary-fixed">
 <!-- SideNavBar (from JSON) -->
-<nav class="hidden md:flex bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline docked left-0 h-full w-64 fixed left-0 top-0 h-full flex flex-col py-unit-lg gap-unit-md z-50 shadow-none">
-<div class="px-unit-lg pb-unit-md border-b border-outline-variant"><div class="flex items-center gap-3">
-  <div class="w-8 h-8 bg-primary rounded flex items-center justify-center shrink-0">
-    <span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
-  </div>
-  <div>
-    <h1 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">JudgeLens</h1>
-    <p class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</p>
-  </div>
-</div></div>
-<div class="flex-1 overflow-y-auto px-unit-sm py-unit-sm flex flex-col gap-1">
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">dashboard</span>
-                Overview
-            </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">play_circle</span>
-                Run Evaluation
-            </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">gavel</span>
-                Judge Agents
-            </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">psychology</span>
-                Advisor Agent
-            </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md bg-surface-container-high dark:bg-surface-container text-primary dark:text-inverse-primary font-bold border-l-4 border-secondary active:scale-98 duration-100 shadow-none" href="#">
-<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dns</span>
-                Model Providers
-            </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">payments</span>
-                Billing
-            </a>
-</div>
-<div class="px-unit-sm border-t border-outline-variant pt-unit-sm flex flex-col gap-1">
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">settings</span>
-                Settings
-            </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-98 duration-100" href="#">
-<span class="material-symbols-outlined text-[20px]">help</span>
-                Support
-            </a>
-</div>
-</nav>
+<include src="components/sidebar-nav.html"></include>
 <!-- Main Content Canvas -->
 <main class="flex-1 ml-0 md:ml-64 p-margin-page max-w-max-width mx-auto w-full relative">
 <!-- Header -->
@@ -244,7 +201,7 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center border border-outline-variant shrink-0">
-<img class="w-8 h-8 object-contain opacity-80" data-alt="A minimalist, highly legible logo icon representing the Ollama brand in a monochrome technical style, suitable for a dark or light workstation UI theme. Crisp edges, vector-like quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4anE_zj2F-0sPYRvsMe1-ZtzIORQCcINYifWaqhGzZHuR3QwsWBNi1V1EaM3eNLiSawEO3YVd4SFj2fQ5CsmA13CNlRn2UIMb1m0fuP3RIRi-9fKOITzWIBnICsnmV_KRcdnYZ1h-o6Aiw5X-llKpPH0VpZ9QnSSjVVDHS2kpRkMnTLPdI3ABBpCJoFvZr_Xwo9ATa3Rb-2WobqI3SPYkPWzXk6XWsnCM-dvHkxTAYYHZ71d4ZMjVZw">
+<img class="w-8 h-8 object-contain opacity-80" alt="Ollama logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4anE_zj2F-0sPYRvsMe1-ZtzIORQCcINYifWaqhGzZHuR3QwsWBNi1V1EaM3eNLiSawEO3YVd4SFj2fQ5CsmA13CNlRn2UIMb1m0fuP3RIRi-9fKOITzWIBnICsnmV_KRcdnYZ1h-o6Aiw5X-llKpPH0VpZ9QnSSjVVDHS2kpRkMnTLPdI3ABBpCJoFvZr_Xwo9ATa3Rb-2WobqI3SPYkPWzXk6XWsnCM-dvHkxTAYYHZ71d4ZMjVZw">
 </div>
 <div>
 <h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Ollama</h3>
@@ -269,7 +226,7 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center border border-outline-variant shrink-0">
-<img class="w-8 h-8 object-contain opacity-80" data-alt="A clean, minimalist logo icon for Groq, utilizing simple geometric shapes or a distinct typographic treatment. Technical, stark, and appropriate for a high-density developer dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgEv1jZG_c7ii6UTeSDoNeTd7SwdSqrun1jLbtO1VN7YSwokxyiuhWlOgWUUxrQncTdeKGhq55xI4fmvQZMKLqjCkXMEMjmaAAEnnfULPogri2DADqEWsJ-41sviO4KixohLdJU2Df9CRsZ5C_tL82sO3oKEMNHwYHR9Yl34fmg7WWbbdjZozofAeWjVWq9f7xAp17sAvfzYtga55PCbLlxd5mOUvfy7Sqle8FW65C7ANgWKPWbWh4IQ">
+<img class="w-8 h-8 object-contain opacity-80" alt="Groq logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgEv1jZG_c7ii6UTeSDoNeTd7SwdSqrun1jLbtO1VN7YSwokxyiuhWlOgWUUxrQncTdeKGhq55xI4fmvQZMKLqjCkXMEMjmaAAEnnfULPogri2DADqEWsJ-41sviO4KixohLdJU2Df9CRsZ5C_tL82sO3oKEMNHwYHR9Yl34fmg7WWbbdjZozofAeWjVWq9f7xAp17sAvfzYtga55PCbLlxd5mOUvfy7Sqle8FW65C7ANgWKPWbWh4IQ">
 </div>
 <div>
 <h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Groq</h3>
@@ -294,7 +251,7 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center border border-outline-variant shrink-0">
-<img class="w-8 h-8 object-contain opacity-80" data-alt="A precise, vector-style icon representing Google Gemini. It should be simplified for a professional UI, perhaps using the standard abstract star shape associated with the AI, rendered in flat, subtle colors or monochrome." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfwF-JTCKWA6K5_MHOvHXkKjUAjUKFdeEAreBXCK2kROy_TgU-AgWQMZ0EminjI6ElrXRjulgZsVYVHJCv7Ns60tvokhTAI66AMBl9XarcJr1Sh-vNvHXgLhhKRbS8FlzkhxAdU5WBU1Wke7xFFTTtq7yShjf1s-csiOY6i9veT3N0sNGn16NZ5G5mlw5Wk7lxtr1gyY0GIg7jd4psj1i_OBWxcGRgddrnmr-KEyfMast4_p621-4ODg">
+<img class="w-8 h-8 object-contain opacity-80" alt="Google Gemini logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfwF-JTCKWA6K5_MHOvHXkKjUAjUKFdeEAreBXCK2kROy_TgU-AgWQMZ0EminjI6ElrXRjulgZsVYVHJCv7Ns60tvokhTAI66AMBl9XarcJr1Sh-vNvHXgLhhKRbS8FlzkhxAdU5WBU1Wke7xFFTTtq7yShjf1s-csiOY6i9veT3N0sNGn16NZ5G5mlw5Wk7lxtr1gyY0GIg7jd4psj1i_OBWxcGRgddrnmr-KEyfMast4_p621-4ODg">
 </div>
 <div>
 <h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Google Gemini</h3>
@@ -321,7 +278,7 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center border border-outline-variant shrink-0">
-<img class="w-8 h-8 object-contain opacity-80" data-alt="The Hugging Face emoji logo, but adapted to fit a serious, highly technical dashboard environment. Perhaps desaturated or presented as a crisp, flat vector graphic rather than a glossy icon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIWSV80Qa9djtPI8lsSnX2J7y1ppnP3j3wh9PFltC3JLF8d0YLoZa3d0o0SBYtWw3vGK0T0ksd9i45UlOl9TcU7FpBSqyy60ZXHHt-l_WabJ-5JuVjtyBZm6aEvjaFDFmdQbAZo8yFn2p308roOHwm0jU07qb9Dc8aPQb-zdGzUQ7lMTeIlwZdKE1SHlmtjrn_5BY3UCoFQp1qU5vfiPtoCIg1A3Fy5HfEcsmVzlcN3zk4pz05BqOmJg">
+<img class="w-8 h-8 object-contain opacity-80" alt="Hugging Face logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIWSV80Qa9djtPI8lsSnX2J7y1ppnP3j3wh9PFltC3JLF8d0YLoZa3d0o0SBYtWw3vGK0T0ksd9i45UlOl9TcU7FpBSqyy60ZXHHt-l_WabJ-5JuVjtyBZm6aEvjaFDFmdQbAZo8yFn2p308roOHwm0jU07qb9Dc8aPQb-zdGzUQ7lMTeIlwZdKE1SHlmtjrn_5BY3UCoFQp1qU5vfiPtoCIg1A3Fy5HfEcsmVzlcN3zk4pz05BqOmJg">
 </div>
 <div>
 <h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Hugging Face</h3>
@@ -341,16 +298,5 @@
 </div>
 </main>
 <!-- Floating Chatbot Widget (Bottom Right) -->
-<div class="fixed bottom-unit-lg right-unit-lg z-50 flex flex-col items-end gap-3 group">
-<!-- Chat Bubble Preview (Hidden by default, shown on hover/interaction) -->
-<div class="bg-surface border border-outline-variant rounded-lg p-3 shadow-[0_4px_20px_rgba(0,0,0,0.05)] w-64 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-200 pointer-events-none">
-<p class="font-body-sm text-body-sm text-on-surface">Need help configuring a custom provider? I can guide you through the setup.</p>
-</div>
-<!-- FAB -->
-<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform hover:bg-primary/90 shrink-0">
-<span class="material-symbols-outlined text-[24px]">smart_toy</span>
-</button>
-</div>
-
-
+<include src="components/chatbot-widget.html"></include>
 </body></html>
