@@ -1,0 +1,60 @@
+<!--
+  sidebar-nav.html — Shared left navigation sidebar used across all app pages
+  (dashboard, judge-agents, advisor-agent, evaluation-run-detail, billing, model-providers).
+
+  NOTE: The "active" link (bg-surface-container-high, border-secondary, font-bold)
+  differs per page. When embedding this partial, replace the active <a> class block
+  with the correct active state for that page, keeping all other links in their
+  inactive state.
+
+  DO NOT modify any classes, spacing, colors, or icons in this file.
+-->
+<nav class="hidden md:flex flex-col bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline h-full w-64 py-unit-lg gap-unit-md z-10 shrink-0">
+<div class="px-unit-lg pb-unit-md border-b border-outline-variant dark:border-outline"><div class="flex items-center gap-unit-md">
+    <div class="w-8 h-8 bg-primary rounded flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary text-[20px] icon-fill">gavel</span>
+    </div>
+    <div class="flex flex-col">
+        <span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary leading-tight">JudgeLens</span>
+        <span class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</span>
+    </div>
+</div></div>
+<div class="flex-1 overflow-y-auto px-unit-sm flex flex-col gap-unit-xs">
+<!-- Active Tab: replace "Overview" active class with the correct page's active link -->
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm bg-surface-container-high dark:bg-surface-container text-primary dark:text-inverse-primary font-bold border-l-4 border-secondary hover:scale-98 duration-100 rounded-r" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+<span class="font-label-md text-label-md">Run Evaluation</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md text-label-md">Judge Agents</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Advisor Agent</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="dns">dns</span>
+<span class="font-label-md text-label-md">Model Providers</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Billing</span>
+</a>
+</div>
+<div class="px-unit-sm mt-auto flex flex-col gap-unit-xs border-t border-outline-variant dark:border-outline pt-unit-md">
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant dark:text-surface-variant font-medium border-l-4 border-transparent hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-r hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</nav>

@@ -1,0 +1,208 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Judge Agents - JudgeLens</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter & Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="../js/global.js"></script>
+<script src="../js/judge-agents.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/judge-agents.css">
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md h-screen flex overflow-hidden workstation-gradient">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full flex flex-col py-unit-lg gap-unit-md bg-surface-container-low border-r border-outline-variant w-64 z-40">
+<!-- Header -->
+<div class="px-unit-lg pb-unit-md mb-unit-sm"><div class="flex items-center gap-3">
+  <div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center">
+    <span class="material-symbols-outlined text-[20px] icon-fill">gavel</span>
+  </div>
+  <div>
+    <h1 class="font-headline-sm text-headline-sm font-bold text-primary">JudgeLens</h1>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</p>
+  </div>
+</div></div>
+<!-- Main Navigation -->
+<div class="flex-1 overflow-y-auto px-unit-md space-y-1">
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="">Overview</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span class="">Run Evaluation</span>
+</a>
+<!-- Active -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md bg-surface-container-high text-primary font-bold border-l-4 border-secondary scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px] icon-fill">gavel</span>
+<span class="">Judge Agents</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="">Advisor Agent</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+<span class="">Model Providers</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="">Billing</span>
+</a>
+</div>
+<!-- Footer Navigation -->
+<div class="px-unit-md mt-auto space-y-1 pt-unit-md border-t border-outline-variant mx-unit-md">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 h-full overflow-y-auto">
+<div class="max-w-max-width mx-auto p-margin-page">
+<!-- Page Header -->
+<header class="flex justify-between items-end mb-unit-xl border-b border-outline-variant pb-unit-sm">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-1">Judge Agents</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure and monitor specialized LLMs evaluating your application outputs.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    New Agent
+                </button>
+</header>
+<!-- Agents Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Card 1: Accuracy -->
+<div class="bg-surface rounded-lg border border-outline-variant p-unit-lg flex flex-col h-full hover:border-secondary transition-colors">
+<div class="flex justify-between items-start mb-unit-md border-b border-outline-variant pb-unit-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">target</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Accuracy</h3>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2 py-1 rounded">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container pulse-indicator"></div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Ready</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg flex-1">Evaluates factual correctness against provided ground truth and external knowledge bases.</p>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">Model Assigned</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">gpt-oss:120b-cloud</span>
+</div>
+</div>
+<!-- Card 2: Relevance -->
+<div class="bg-surface rounded-lg border border-outline-variant p-unit-lg flex flex-col h-full hover:border-secondary transition-colors">
+<div class="flex justify-between items-start mb-unit-md border-b border-outline-variant pb-unit-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">format_list_bulleted</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Relevance</h3>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2 py-1 rounded">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container pulse-indicator"></div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Ready</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg flex-1">Determines if the response directly addresses the user's prompt without unnecessary tangents.</p>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">Model Assigned</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">qwen3-coder:480b-cloud</span>
+</div>
+</div>
+<!-- Card 3: Reasoning -->
+<div class="bg-surface rounded-lg border border-outline-variant p-unit-lg flex flex-col h-full hover:border-secondary transition-colors">
+<div class="flex justify-between items-start mb-unit-md border-b border-outline-variant pb-unit-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">account_tree</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Reasoning</h3>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2 py-1 rounded">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container pulse-indicator"></div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Ready</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg flex-1">Analyzes the logical steps taken to arrive at a conclusion, checking for fallacies or gaps.</p>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">Model Assigned</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">deepseek-v3.1:671b-cloud</span>
+</div>
+</div>
+<!-- Card 4: Hallucination -->
+<div class="bg-surface rounded-lg border border-outline-variant p-unit-lg flex flex-col h-full hover:border-secondary transition-colors">
+<div class="flex justify-between items-start mb-unit-md border-b border-outline-variant pb-unit-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">visibility_off</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Hallucination</h3>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2 py-1 rounded">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container pulse-indicator"></div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Ready</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg flex-1">Detects fabricated information, unsupported claims, or confident but incorrect statements.</p>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">Model Assigned</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">kimi-k2:1t-cloud</span>
+</div>
+</div>
+<!-- Card 5: Safety -->
+<div class="bg-surface rounded-lg border border-outline-variant p-unit-lg flex flex-col h-full hover:border-secondary transition-colors">
+<div class="flex justify-between items-start mb-unit-md border-b border-outline-variant pb-unit-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">shield</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Safety</h3>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2 py-1 rounded">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container pulse-indicator"></div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Ready</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg flex-1">Screens for toxic, biased, harmful, or policy-violating content in model outputs.</p>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">Model Assigned</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">Llama Guard (local Ollama)</span>
+</div>
+</div>
+<!-- Card 6: Style -->
+<div class="bg-surface rounded-lg border border-outline-variant p-unit-lg flex flex-col h-full hover:border-secondary transition-colors">
+<div class="flex justify-between items-start mb-unit-md border-b border-outline-variant pb-unit-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">brush</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Style</h3>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container px-2 py-1 rounded">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container pulse-indicator"></div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Ready</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg flex-1">Evaluates adherence to brand guidelines, tone of voice, and requested formatting parameters.</p>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">Model Assigned</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">gpt-oss:20b-cloud</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Chatbot Widget -->
+<div class="fixed bottom-margin-page right-margin-page z-50"><div class="flex flex-col items-end gap-4"><div id="chat-panel" class="hidden w-[360px] h-[420px] bg-surface-container-lowest rounded-xl shadow-[0px_8px_32px_rgba(0,0,0,0.2)] border border-outline-variant flex flex-col overflow-hidden"><div class="bg-primary p-4 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-on-primary">psychology</span><span class="font-headline-sm text-headline-sm text-on-primary">Evaluation Advisor</span></div><button id="close-chat-btn" class="text-on-primary hover:opacity-80"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-y-auto p-4 space-y-4"><div class="flex gap-2 items-start"><div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-[18px]">smart_toy</span></div><div class="bg-surface-container-low p-3 rounded-lg text-body-sm">Hello! I'm your Evaluation Advisor. How can I help you configure your Judge Agents today?</div></div></div><div class="p-4 border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-2 bg-surface-container px-3 py-2 rounded-full"><input type="text" placeholder="Ask a question..." class="bg-transparent border-none focus:ring-0 text-body-sm flex-1"><button class="text-primary"><span class="material-symbols-outlined">send</span></button></div></div></div><button id="toggle-chat-btn" class="bg-primary text-on-primary w-14 h-14 rounded-full shadow-[0px_4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[24px]">forum</span></button></div></div>
+
+
+</body></html>

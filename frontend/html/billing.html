@@ -1,0 +1,222 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Billing Settings - JudgeLens</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="../js/global.js"></script>
+<script src="../js/billing.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/billing.css">
+</head>
+<body class="bg-background text-on-surface h-full flex antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col bg-surface-container-low border-r border-outline-variant docked left-0 h-full w-64 py-unit-lg gap-unit-md flex-shrink-0">
+<div class="px-unit-lg mb-unit-lg flex items-center gap-unit-sm"><div class="w-8 h-8 bg-primary rounded-DEFAULT flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[20px]" data-weight="fill">gavel</span></div><div><h1 class="font-headline-sm text-headline-sm font-bold text-primary">JudgeLens</h1><p class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</p></div></div>
+<div class="flex-1 flex flex-col gap-unit-xs px-unit-sm overflow-y-auto">
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                Run Evaluation
+            </a>
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+                Judge Agents
+            </a>
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+                Advisor Agent
+            </a>
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+                Model Providers
+            </a>
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT bg-surface-container-high text-primary font-bold border-l-4 border-secondary font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">payments</span>
+                Billing
+            </a>
+</div>
+<div class="mt-auto flex flex-col gap-unit-xs px-unit-sm pt-unit-md border-t border-outline-variant">
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-unit-sm px-unit-md py-unit-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md hover:scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto w-full">
+<!-- TopAppBar Mobile Fallback -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-page py-unit-sm bg-surface border-b border-outline-variant">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">JudgeLens</h1>
+<button class="material-symbols-outlined text-primary">menu</button>
+</header>
+<div class="max-w-max-width mx-auto px-margin-page py-unit-xl flex flex-col gap-unit-lg">
+<header>
+<h2 class="font-headline-md text-headline-md text-primary mb-unit-xs">Billing &amp; Subscription</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your JudgeLens plan, view usage, and update payment methods.</p>
+</header>
+<!-- Grid Layout for Main Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Current Plan Card -->
+<section class="lg:col-span-4 bg-surface-bright border border-outline-variant rounded-lg p-unit-lg flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-unit-md">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block mb-unit-xs">Current Plan</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Pro Tier</h3>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-1 rounded-full font-label-md text-label-md">$29 / mo</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-lg">Your next billing date is <strong class="text-on-surface">Jan 24, 2024</strong>.</p>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-2 px-4 rounded-DEFAULT hover:opacity-90 transition-opacity">
+                        Manage Subscription
+                    </button>
+</section>
+<!-- Usage Breakdown Table -->
+<section class="lg:col-span-8 bg-surface-bright border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<div class="px-unit-lg py-unit-md border-b border-outline-variant bg-surface flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-primary">Usage Breakdown</h3>
+<span class="font-label-md text-label-md text-on-surface-variant">Current Month (Dec 24 - Jan 24)</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest">
+<th class="font-label-md text-label-md text-on-surface-variant px-unit-lg py-unit-sm uppercase tracking-wider">Service</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-unit-lg py-unit-sm uppercase tracking-wider">Usage</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-unit-lg py-unit-sm uppercase tracking-wider">Limit</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-unit-lg py-unit-sm uppercase tracking-wider w-1/3">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-unit-lg py-unit-md text-primary font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">model_training</span>
+                                        Evaluations
+                                    </td>
+<td class="px-unit-lg py-unit-md text-on-surface-variant font-mono-sm text-mono-sm">8,450</td>
+<td class="px-unit-lg py-unit-md text-on-surface-variant font-mono-sm text-mono-sm">10,000</td>
+<td class="px-unit-lg py-unit-md">
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 84.5%"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-unit-lg py-unit-md text-primary font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">forum</span>
+                                        Chatbot Queries
+                                    </td>
+<td class="px-unit-lg py-unit-md text-on-surface-variant font-mono-sm text-mono-sm">1,204</td>
+<td class="px-unit-lg py-unit-md text-on-surface-variant font-mono-sm text-mono-sm">5,000</td>
+<td class="px-unit-lg py-unit-md">
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 24%"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-unit-lg py-unit-md text-primary font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">psychology</span>
+                                        Advisor Agent Hrs
+                                    </td>
+<td class="px-unit-lg py-unit-md text-on-surface-variant font-mono-sm text-mono-sm">45.2</td>
+<td class="px-unit-lg py-unit-md text-on-surface-variant font-mono-sm text-mono-sm">100</td>
+<td class="px-unit-lg py-unit-md">
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 45.2%"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Invoices Section -->
+<section class="bg-surface-bright border border-outline-variant rounded-lg flex flex-col mt-unit-md">
+<div class="px-unit-lg py-unit-md border-b border-outline-variant bg-surface">
+<h3 class="font-headline-sm text-headline-sm text-primary">Recent Invoices</h3>
+</div>
+<div class="p-unit-lg flex items-center justify-between border-b border-outline-variant last:border-0 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-unit-md">
+<div class="bg-surface-container p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-primary font-medium">Invoice #INV-2023-12</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Dec 24, 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-unit-md">
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">$29.00</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">download</span>
+</div>
+</div>
+<div class="p-unit-lg flex items-center justify-between border-b border-outline-variant last:border-0 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-unit-md">
+<div class="bg-surface-container p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-primary font-medium">Invoice #INV-2023-11</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Nov 24, 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-unit-md">
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">$29.00</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">download</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Chatbot Widget -->
+<div class="fixed bottom-margin-page right-margin-page z-50 flex flex-col items-end gap-unit-md">
+    <!-- Chat Panel (Hidden by default, would be toggled by JS in a real app) -->
+    <div id="chat-panel" class="hidden flex flex-col w-[360px] h-[420px] bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary p-unit-md flex justify-between items-center">
+            <h3 class="text-on-primary font-headline-sm text-headline-sm">Evaluation Advisor</h3>
+            <button id="close-chat-btn" class="material-symbols-outlined text-on-primary">close</button>
+        </div>
+        <!-- Message List -->
+        <div class="flex-1 overflow-y-auto p-unit-md flex flex-col gap-unit-sm">
+            <div class="bg-surface-container p-unit-sm rounded-lg max-w-[80%] self-start">
+                <p class="text-body-sm">Hello! How can I help you with your evaluations today?</p>
+            </div>
+        </div>
+        <!-- Input Bar -->
+        <div class="p-unit-sm border-t border-outline-variant bg-surface flex gap-unit-xs">
+            <input type="text" placeholder="Ask a question..." class="flex-1 bg-surface-container-low border-none rounded-full px-4 py-2 text-body-sm focus:ring-1 focus:ring-secondary">
+            <button class="bg-secondary text-on-secondary p-2 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-[20px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- FAB (56px circular) -->
+    <button id="toggle-chat-btn" class="w-[56px] h-[56px] bg-secondary text-on-secondary rounded-full shadow-lg hover:scale-105 transition-transform flex items-center justify-center group">
+        <span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+    </button>
+</div>
+
+
+</body></html>

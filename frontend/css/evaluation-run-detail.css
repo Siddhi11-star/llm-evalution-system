@@ -1,0 +1,38 @@
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+
+/* Sparkline simple css */
+.sparkline {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 100%;
+}
+.spark-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #4b41e1; /* secondary */
+}
+.spark-line {
+    height: 2px;
+    flex-grow: 1;
+    background-color: #e1e3e4; /* surface-variant */
+    margin: 0 4px;
+    position: relative;
+}
+.spark-range {
+    position: absolute;
+    height: 100%;
+    background-color: #c7c6c6; /* secondary-fixed-dim */
+    top: 0;
+    border-radius: 1px;
+}
+
+/* Floating Chatbot */
+#chatbot-widget {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#chatbot-widget.collapsed {
+    transform: translateY(calc(100% - 64px));
+}

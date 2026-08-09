@@ -1,0 +1,13 @@
+/* Global Styles */
+
+.icon-fill {
+    font-variation-settings: 'FILL' 1;
+}
+
+.animate-alternate {
+    animation-direction: alternate;
+}
+
+.animate-delay-200 {
+    animation-delay: 0.2s;
+}
