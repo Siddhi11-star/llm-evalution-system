@@ -40,17 +40,3 @@ docs/                 ← Design system notes and token references
 
 See `docs/design-system-judgelens.md` and `docs/design-system-auralis.md` for
 full color palettes, typography scales, spacing tokens, and component specs.
-
-## Frontend Compilation
-
-The frontend pages use a template-include system so that modifications to shared components (like the sidebar, top navigation, and chatbot widget) update dynamically across all screens.
-
-To compile the `src/` files into final browser-ready static HTML files in the `dist/` directory:
-
-1. Navigate to the `frontend/` directory.
-2. Run the build script:
-   ```bash
-   npm run build:html
-   ```
-3. Open any compiled page from the `frontend/dist/` directory in your browser.
-

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>JudgeLens - Advisor Agent (Locked)</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Inter:wght@400;500;600&family=Geist:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -123,13 +123,60 @@
 </head>
 <body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-hidden">
 <!-- SideNavBar (Shared Component) -->
-<include src="components/sidebar-nav.html"></include>
+<nav class="fixed left-0 top-0 h-full flex flex-col py-unit-lg gap-unit-md docked left-0 h-full w-64 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline z-20">
+<!-- Header -->
+<div class="px-unit-lg mb-unit-md flex items-center gap-unit-sm"><div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary shrink-0">
+  <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div>
+  <h1 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">JudgeLens</h1>
+  <p class="font-body-sm text-body-sm text-on-surface-variant">LLM Evaluation Suite</p>
+</div></div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-1 px-unit-sm">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                Run Evaluation
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+                Judge Agents
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-surface-container-high dark:bg-surface-container text-primary dark:text-inverse-primary font-bold border-l-4 border-secondary font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+                Advisor Agent
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+                Model Providers
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+                Billing
+            </a>
+</div>
+<!-- Footer Links -->
+<div class="mt-auto px-unit-sm flex flex-col gap-1 border-t border-outline-variant pt-unit-md mx-unit-sm">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md scale-98 duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                Support
+            </a>
+</div>
+</nav>
 <!-- Main Content Area -->
 <main class="ml-64 h-screen flex flex-col overflow-hidden relative">
 <!-- Top Section: Input -->
 <div class="px-margin-page pt-margin-page pb-unit-lg border-b border-outline-variant bg-surface-lowest shrink-0">
 <div class="max-w-4xl">
-<h1 class="font-display-lg text-display-lg text-primary mb-unit-sm">Advisor Agent</h1>
+<h2 class="font-display-lg text-display-lg text-primary mb-unit-sm">Advisor Agent</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-unit-xl max-w-2xl">
                     Describe your complex evaluation task, and the Advisor Agent will recommend the optimal blend of Judge Agents, metrics, and models to achieve maximum precision.
                 </p>
@@ -156,7 +203,7 @@
 <div class="bg-surface border border-outline-variant rounded p-unit-lg">
 <div class="flex justify-between items-start mb-unit-md pb-unit-sm border-b border-outline-variant">
 <div>
-<h2 class="font-headline-sm text-headline-sm text-primary">Recommendation Alpha</h2>
+<h3 class="font-headline-sm text-headline-sm text-primary">Recommendation Alpha</h3>
 <p class="font-mono-sm text-mono-sm text-on-surface-variant">98% Match Score</p>
 </div>
 <span class="font-label-md text-label-md text-on-tertiary-container bg-tertiary-fixed-dim px-2 py-1 rounded">Optimal</span>
@@ -170,7 +217,7 @@
 <div class="bg-surface border border-outline-variant rounded p-unit-lg">
 <div class="flex justify-between items-start mb-unit-md pb-unit-sm border-b border-outline-variant">
 <div>
-<h2 class="font-headline-sm text-headline-sm text-primary">Recommendation Beta</h2>
+<h3 class="font-headline-sm text-headline-sm text-primary">Recommendation Beta</h3>
 <p class="font-mono-sm text-mono-sm text-on-surface-variant">92% Match Score</p>
 </div>
 <span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-2 py-1 rounded">Budget</span>
@@ -184,7 +231,7 @@
 <div class="bg-surface border border-outline-variant rounded p-unit-lg">
 <div class="flex justify-between items-start mb-unit-md pb-unit-sm border-b border-outline-variant">
 <div>
-<h2 class="font-headline-sm text-headline-sm text-primary">Recommendation Gamma</h2>
+<h3 class="font-headline-sm text-headline-sm text-primary">Recommendation Gamma</h3>
 <p class="font-mono-sm text-mono-sm text-on-surface-variant">88% Match Score</p>
 </div>
 <span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-2 py-1 rounded">Alternative</span>
@@ -201,7 +248,7 @@
 <div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mb-unit-lg border border-outline-variant">
 <span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
 </div>
-<h2 class="font-display-lg text-display-lg text-primary mb-unit-sm tracking-tight">Unlock Advisor Agent</h2>
+<h3 class="font-display-lg text-display-lg text-primary mb-unit-sm tracking-tight">Unlock Advisor Agent</h3>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-unit-xl max-w-md">
                     Advisor Agent is a Pro feature. Upgrade your workspace to generate optimal evaluation architectures instantly based on your specific requirements and budget.
                 </p>
@@ -213,7 +260,40 @@
 </div>
 </main>
 <!-- Floating Chatbot Widget -->
-<include src="components/chatbot-widget.html"></include>
+<div class="fixed bottom-margin-page right-margin-page z-50"><!-- Chatbot Panel (Hidden by default) -->
+<div id="chat-panel" class="hidden absolute bottom-20 right-0 w-[360px] h-[420px] bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] flex flex-col overflow-hidden">
+    <!-- Header -->
+    <div class="bg-primary p-unit-md flex items-center justify-between text-on-primary">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">psychology</span>
+            <h4 class="font-headline-sm text-headline-sm">Evaluation Advisor</h4>
+        </div>
+        <button onclick="document.getElementById('chat-panel').classList.add('hidden')" class="hover:bg-surface-tint p-1 rounded transition-colors">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+    </div>
+    <!-- Message List -->
+    <div class="flex-1 overflow-y-auto p-unit-md space-y-unit-md bg-surface-container-low">
+        <div class="flex flex-col gap-1 max-w-[80%]">
+            <div class="bg-surface-container-highest p-unit-sm rounded-lg text-body-sm">
+                Hello! I'm your Evaluation Advisor. How can I help you optimize your judge agents today?
+            </div>
+            <span class="text-mono-sm text-on-surface-variant ml-1">10:00 AM</span>
+        </div>
+    </div>
+    <!-- Input Bar -->
+    <div class="p-unit-sm border-t border-outline-variant bg-surface-container-lowest flex gap-2 items-center">
+        <input type="text" placeholder="Ask a question..." class="flex-1 bg-surface-container border-none rounded-full px-unit-md py-2 text-body-sm focus:ring-1 focus:ring-secondary">
+        <button class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center hover:bg-secondary-container transition-colors">
+            <span class="material-symbols-outlined text-[18px]">send</span>
+        </button>
+    </div>
+</div>
+
+<!-- FAB (56px circular) -->
+<button onclick="document.getElementById('chat-panel').classList.toggle('hidden')" aria-label="Open Chat Support" class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center hover:-translate-y-1 transition-transform border border-outline-variant shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
+    <span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+</button></div>
 
 
 </body></html>

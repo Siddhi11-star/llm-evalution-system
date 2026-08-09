@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>JudgeLens - Judge LLM Output with Precision</title>
-<!-- Google Fonts Preconnect -->
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
-<!-- Google Fonts & Material Symbols -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -82,26 +77,93 @@
                       "gutter": "16px"
               },
               "fontFamily": {
-                      "body-lg": ["Inter"],
-                      "body-sm": ["Inter"],
-                      "headline-md": ["Geist"],
-                      "headline-sm": ["Geist"],
-                      "display-lg": ["Geist"],
-                      "mono-sm": ["Geist"],
-                      "body-md": ["Inter"],
-                      "label-md": ["Geist"]
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Geist"
+                      ],
+                      "headline-sm": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "mono-sm": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Geist"
+                      ]
               },
               "fontSize": {
-                      "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                      "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
-                      "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                      "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
-                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                      "mono-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
-                      "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
-                      "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "mono-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
               }
-            }
+      },
           },
         }
       </script>
@@ -121,13 +183,31 @@
           .gradient-text {
               background: linear-gradient(90deg, #000000 0%, #4b41e1 100%);
               -webkit-background-clip: text;
-              background-clip: text;
+              -webkit-text-fill-color: transparent;
+          }
+          .hero-gradient {
+              background: radial-gradient(circle at center, rgba(75, 65, 225, 0.1) 0%, rgba(248, 249, 250, 0) 70%);
           }
       </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
 <!-- TopNavBar -->
-<include src="components/top-nav.html"></include>
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-margin-page py-unit-sm max-w-max-width mx-auto">
+<div class="flex items-center gap-4"><a class="flex items-center gap-3 group" href="#"><div class="w-8 h-8 bg-primary rounded flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-primary" style="font-variation-settings: 'FILL' 1">gavel</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight leading-none">JudgeLens</span><span class="text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant leading-none mt-0.5">LLM Evaluation Suite</span></div></a></div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Evaluations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Leaderboard</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Advisor</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Docs</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors opacity-80 scale-95 transition-all" href="#">Pricing</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-label-md font-label-md text-primary bg-transparent border border-outline-variant rounded hover:bg-surface-container transition-colors hidden md:block">Sign In</button>
+<button class="px-4 py-2 text-label-md font-label-md text-on-primary bg-primary rounded hover:bg-primary-container transition-colors">Get Started</button>
+</div>
+</div>
+</header>
 <!-- Main Content -->
 <main class="flex-grow">
 <!-- Hero Section -->
@@ -138,15 +218,15 @@
 </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10">
                     The ultimate evaluation suite for AI developers. Leverage autonomous judge agents, rigorous scoring frameworks, and detailed diagnostics to ensure your models perform flawlessly.
-</p>
+                </p>
 <div class="flex flex-col sm:flex-row gap-4 mb-16">
-<a href="dashboard.html" class="px-6 py-3 bg-primary text-on-primary rounded text-label-md font-label-md hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+<button class="px-6 py-3 bg-primary text-on-primary rounded text-label-md font-label-md hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
                         Start Evaluating
                         <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-<a href="#" class="px-6 py-3 bg-surface text-primary border border-outline-variant rounded text-label-md font-label-md hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+</button>
+<button class="px-6 py-3 bg-surface text-primary border border-outline-variant rounded text-label-md font-label-md hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
                         View Documentation
-                    </a>
+                    </button>
 </div>
 <!-- Hero Visual Placeholder -->
 <div class="w-full max-w-5xl aspect-video rounded-xl border border-outline-variant bg-surface-container-lowest shadow-sm relative overflow-hidden flex items-center justify-center group">
@@ -217,7 +297,7 @@
 <h3 class="font-headline-md text-headline-md text-primary mb-3">Judge Agents</h3>
 <p class="font-body-md text-body-md text-on-surface-variant flex-grow">Deploy specialized, autonomous agents that evaluate outputs against strict criteria. Configure customized rubrics for alignment, tone, and factual accuracy.</p>
 <div class="mt-6 pt-6 border-t border-outline-variant">
-<a href="judge-agents.html" class="font-mono-sm text-mono-sm text-secondary flex items-center gap-1 hover:underline">Configure Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+<span class="font-mono-sm text-mono-sm text-secondary flex items-center gap-1">Configure Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
 </div>
 </div>
 <!-- Feature 2 -->
@@ -228,7 +308,7 @@
 <h3 class="font-headline-md text-headline-md text-primary mb-3">Advisor Agent</h3>
 <p class="font-body-md text-body-md text-on-surface-variant flex-grow">Receive actionable feedback and optimization strategies directly from an intelligent advisor, turning evaluation metrics into concrete prompt improvements.</p>
 <div class="mt-6 pt-6 border-t border-outline-variant">
-<a href="advisor-agent.html" class="font-mono-sm text-mono-sm text-secondary flex items-center gap-1 hover:underline">View Insights <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+<span class="font-mono-sm text-mono-sm text-secondary flex items-center gap-1">View Insights <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
 </div>
 </div>
 <!-- Feature 3 -->
@@ -239,7 +319,7 @@
 <h3 class="font-headline-md text-headline-md text-primary mb-3">Evaluation Dashboard</h3>
 <p class="font-body-md text-body-md text-on-surface-variant flex-grow">Visualize complex performance data over time. Compare models side-by-side with high-density data tables and intuitive progress indicators.</p>
 <div class="mt-6 pt-6 border-t border-outline-variant">
-<a href="dashboard.html" class="font-mono-sm text-mono-sm text-secondary flex items-center gap-1 hover:underline">Explore Data <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+<span class="font-mono-sm text-mono-sm text-secondary flex items-center gap-1">Explore Data <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
 </div>
 </div>
 </div>
@@ -258,7 +338,7 @@
 </div>
 </section>
 <!-- Pricing -->
-<section id="pricing" class="py-24 bg-background">
+<section class="py-24 bg-background">
 <div class="max-w-max-width mx-auto px-margin-page">
 <div class="text-center mb-16">
 <h2 class="font-display-lg text-display-lg text-primary tracking-tight mb-4">Transparent Pricing</h2>
@@ -289,7 +369,7 @@
                                 Community Support
                             </li>
 </ul>
-<a href="login.html" class="w-full py-3 bg-surface border border-outline-variant text-primary rounded font-label-md text-label-md hover:bg-surface-container transition-colors mt-auto text-center block">Get Started</a>
+<button class="w-full py-3 bg-surface border border-outline-variant text-primary rounded font-label-md text-label-md hover:bg-surface-container transition-colors mt-auto">Get Started</button>
 </div>
 <!-- Pro -->
 <div class="border-2 border-secondary rounded-xl p-8 bg-surface relative flex flex-col h-full shadow-lg transform md:-translate-y-4">
@@ -320,7 +400,7 @@
                                 Priority Email Support
                             </li>
 </ul>
-<a href="login.html" class="w-full py-3 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-primary-container transition-colors mt-auto text-center block">Start Free Trial</a>
+<button class="w-full py-3 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-primary-container transition-colors mt-auto">Start Free Trial</button>
 </div>
 <!-- Team -->
 <div class="border border-outline-variant rounded-xl p-8 bg-surface flex flex-col h-full">
@@ -350,14 +430,34 @@
                                 Dedicated Account Manager
                             </li>
 </ul>
-<a href="login.html" class="w-full py-3 bg-surface border border-outline-variant text-primary rounded font-label-md text-label-md hover:bg-surface-container transition-colors mt-auto text-center block">Contact Sales</a>
+<button class="w-full py-3 bg-surface border border-outline-variant text-primary rounded font-label-md text-label-md hover:bg-surface-container transition-colors mt-auto">Contact Sales</button>
 </div>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<include src="components/footer.html"></include>
+<footer class="bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width bottom-0">
+<div class="w-full px-margin-page py-unit-xl flex flex-col md:flex-row justify-between items-center max-w-max-width mx-auto gap-8 md:gap-0">
+<div class="flex items-center gap-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-primary rounded flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-primary" style="font-variation-settings: 'FILL' 1">gavel</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight leading-none">JudgeLens</span><span class="text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant leading-none mt-0.5">LLM Evaluation Suite</span></div></div></div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">API Reference</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Status</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Documentation</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Terms</a>
+</nav>
+<div class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant">
+                © 2024 JudgeLens. Engineered for LLM Precision.
+            </div>
+</div>
+</footer>
 <!-- Floating Chatbot Widget -->
-<include src="components/chatbot-widget.html"></include>
+<div class="fixed bottom-6 right-6 z-50">
+<button aria-label="Open Chat" class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:bg-primary-container transition-transform hover:scale-105">
+<span class="material-symbols-outlined text-[24px]">chat</span>
+</button>
+</div>
+
+
 </body></html>
