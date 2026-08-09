@@ -2,6 +2,8 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>JudgeLens - Login</title>
+<script src="../js/global.js"></script>
+<script src="../js/login.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -9,116 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "outline-variant": "#cfc4c5",
-                      "accent-purple": "#4b41e1", /* Adjusted accent */
-                      "inverse-primary": "#c6c6c6",
-                      "secondary-container": "#e1dfdf",
-                      "primary": "#000000",
-                      "border-subtle": "#e5e7eb", /* Adjusted border */
-                      "on-primary-fixed": "#1b1b1b",
-                      "surface-dim": "#dadada",
-                      "surface-container-highest": "#e2e2e2",
-                      "on-error-container": "#93000a",
-                      "on-tertiary": "#ffffff",
-                      "accent-indigo": "#4b41e1", /* Adjusted accent */
-                      "primary-fixed": "#e2e2e2",
-                      "primary-fixed-dim": "#c6c6c6",
-                      "tertiary-fixed": "#e2e2e2",
-                      "on-surface": "#111827", /* Adjusted dark text */
-                      "accent-emerald": "#4b41e1", /* Adjusted accent */
-                      "surface-bright": "#ffffff",
-                      "inverse-on-surface": "#f1f1f1",
-                      "error-container": "#ffdad6",
-                      "on-background": "#111827", /* Adjusted dark text */
-                      "background": "#ffffff", /* Clean white */
-                      "tertiary": "#000000",
-                      "on-secondary-fixed-variant": "#464747",
-                      "on-error": "#ffffff",
-                      "outline": "#9ca3af",
-                      "card-fill": "#ffffff", /* Clean white */
-                      "background-warm": "#ffffff", /* Clean white */
-                      "tertiary-fixed-dim": "#c6c6c6",
-                      "on-tertiary-fixed": "#1b1b1b",
-                      "error": "#ba1a1a",
-                      "surface-container-high": "#e8e8e8",
-                      "glass-dark": "rgba(20, 20, 20, 0.6)",
-                      "on-secondary-fixed": "#1b1c1c",
-                      "on-secondary-container": "#4b5563", /* Adjusted secondary text */
-                      "panel-fill": "#ffffff",
-                      "surface-container": "#f3f4f6",
-                      "on-primary": "#ffffff",
-                      "surface": "#ffffff",
-                      "on-tertiary-fixed-variant": "#474747",
-                      "primary-container": "#1b1b1b",
-                      "secondary-fixed-dim": "#c7c6c6",
-                      "surface-container-lowest": "#ffffff",
-                      "on-primary-fixed-variant": "#474747",
-                      "surface-variant": "#f9fafb",
-                      "secondary-fixed": "#e4e2e2",
-                      "inverse-surface": "#303030",
-                      "glass-white": "rgba(255, 255, 255, 1)",
-                      "secondary": "#6b7280",
-                      "on-secondary": "#ffffff",
-                      "surface-tint": "#000000",
-                      "on-surface-variant": "#4b5563", /* Adjusted secondary text */
-                      "on-tertiary-container": "#848484",
-                      "on-primary-container": "#848484",
-                      "surface-container-low": "#ffffff",
-                      "tertiary-container": "#1b1b1b"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem", /* Sharp corners */
-                      "lg": "0.25rem",
-                      "xl": "0.25rem",
-                      "full": "0.25rem",
-                      "3xl": "0.25rem"
-              },
-              "spacing": {
-                      "container_max_width": "1280px",
-                      "gutter": "32px",
-                      "section_gap_desktop": "180px",
-                      "unit_base": "8px",
-                      "section_gap_mobile": "80px",
-                      "padding_card": "2rem" /* Adjusted padding */
-              },
-              "fontFamily": {
-                      "h1-mobile": ["Geist", "sans-serif"],
-                      "caption": ["Inter", "sans-serif"],
-                      "h3": ["Geist", "sans-serif"],
-                      "h2": ["Geist", "sans-serif"],
-                      "label-caps": ["Inter", "sans-serif"],
-                      "h1": ["Geist", "sans-serif"],
-                      "body-lg": ["Inter", "sans-serif"],
-                      "body-md": ["Inter", "sans-serif"]
-              },
-              "fontSize": {
-                      "h1-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                      "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "400" }],
-                      "h3": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                      "h2": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600" }],
-                      "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
-                      "h1": ["84px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "600" }],
-                      "body-lg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
-                      "body-md": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }]
-              },
-              "boxShadow": {
-                      "card": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)" /* Dashboard shadow */
-              }
-            },
-          },
-        }
-    </script>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/login.css">
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen flex items-center justify-center relative overflow-hidden">
 <!-- Login Container -->
@@ -127,7 +21,7 @@
 <!-- Brand Anchor -->
 <div class="mb-8 text-center w-full"><div class="flex flex-col items-center gap-3">
   <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
-    <span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">gavel</span>
+    <span class="material-symbols-outlined text-on-primary text-[20px] icon-fill-login">gavel</span>
   </div>
   <div class="text-center">
     <h1 class="font-h3 text-h3 text-primary mb-1">JudgeLens</h1>
@@ -135,7 +29,7 @@
   </div>
 </div></div>
 <!-- Login Form -->
-<form class="w-full space-y-5 flex-col" onsubmit="event.preventDefault();">
+<form class="w-full space-y-5 flex-col">
 <div class="space-y-4">
 <!-- Email Field -->
 <div class="relative">

@@ -2,145 +2,14 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Evaluation Run Detail - JudgeLens</title>
+<script src="../js/global.js"></script>
+<script src="../js/evaluation-run-detail.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "secondary-container": "#645efb",
-                        "surface-variant": "#e1e3e4",
-                        "primary-fixed": "#e2e2e2",
-                        "inverse-surface": "#2e3132",
-                        "surface-container-highest": "#e1e3e4",
-                        "on-primary-fixed": "#1b1b1b",
-                        "outline": "#7e7576",
-                        "on-error-container": "#93000a",
-                        "on-secondary": "#ffffff",
-                        "secondary": "#4b41e1",
-                        "on-primary-container": "#848484",
-                        "inverse-on-surface": "#f0f1f2",
-                        "on-primary": "#ffffff",
-                        "on-tertiary-fixed": "#002113",
-                        "surface-container-low": "#f3f4f5",
-                        "tertiary-container": "#002113",
-                        "tertiary": "#000000",
-                        "surface-tint": "#5e5e5e",
-                        "primary": "#000000",
-                        "surface-container": "#edeeef",
-                        "on-tertiary": "#ffffff",
-                        "on-surface-variant": "#4c4546",
-                        "error-container": "#ffdad6",
-                        "on-tertiary-container": "#009668",
-                        "on-tertiary-fixed-variant": "#005236",
-                        "surface-dim": "#d9dadb",
-                        "inverse-primary": "#c6c6c6",
-                        "outline-variant": "#cfc4c5",
-                        "surface-bright": "#f8f9fa",
-                        "on-error": "#ffffff",
-                        "primary-fixed-dim": "#c6c6c6",
-                        "on-secondary-container": "#fffbff",
-                        "on-secondary-fixed": "#0f0069",
-                        "primary-container": "#1b1b1b",
-                        "secondary-fixed": "#e2dfff",
-                        "tertiary-fixed-dim": "#4edea3",
-                        "on-background": "#191c1d",
-                        "error": "#ba1a1a",
-                        "tertiary-fixed": "#6ffbbe",
-                        "on-surface": "#191c1d",
-                        "surface-container-lowest": "#ffffff",
-                        "surface": "#f8f9fa",
-                        "on-primary-fixed-variant": "#474747",
-                        "secondary-fixed-dim": "#c3c0ff",
-                        "on-secondary-fixed-variant": "#3323cc",
-                        "surface-container-high": "#e7e8e9",
-                        "background": "#f8f9fa"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "margin-page": "32px",
-                        "unit-sm": "8px",
-                        "unit-xs": "4px",
-                        "unit-xl": "48px",
-                        "unit-lg": "24px",
-                        "max-width": "1280px",
-                        "unit-md": "16px",
-                        "gutter": "16px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Inter"],
-                        "body-sm": ["Inter"],
-                        "headline-md": ["Geist"],
-                        "headline-sm": ["Geist"],
-                        "display-lg": ["Geist"],
-                        "mono-sm": ["Geist"],
-                        "body-md": ["Inter"],
-                        "label-md": ["Geist"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
-                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "mono-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
-                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
-                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
-<style>
-        body { font-family: 'Inter', sans-serif; background-color: theme('colors.background'); color: theme('colors.on-background'); }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
-        
-        /* Sparkline simple css */
-        .sparkline {
-            display: flex;
-            align-items: center;
-            height: 24px;
-            width: 100%;
-        }
-        .spark-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: theme('colors.secondary');
-        }
-        .spark-line {
-            height: 2px;
-            flex-grow: 1;
-            background-color: theme('colors.surface-variant');
-            margin: 0 4px;
-            position: relative;
-        }
-        .spark-range {
-            position: absolute;
-            height: 100%;
-            background-color: theme('colors.secondary-fixed-dim');
-            top: 0;
-            border-radius: 1px;
-        }
-        
-        /* Floating Chatbot */
-        #chatbot-widget {
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #chatbot-widget.collapsed {
-            transform: translateY(calc(100% - 64px));
-        }
-    </style>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/evaluation-run-detail.css">
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col">
 <!-- TopNavBar -->
@@ -285,14 +154,14 @@
 <!-- Floating Chatbot Widget -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
     <!-- Expansion Panel -->
-    <div id="chatbot-panel" class="hidden w-[360px] h-[420px] bg-surface-bright border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col">
+    <div id="chat-panel" class="hidden w-[360px] h-[420px] bg-surface-bright border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col">
         <!-- Header -->
         <div class="bg-surface border-b border-outline-variant p-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-secondary">smart_toy</span>
                 <span class="text-headline-sm font-headline-sm text-primary">Evaluation Advisor</span>
             </div>
-            <button onclick="document.getElementById('chatbot-panel').classList.add('hidden')" class="text-on-surface-variant hover:text-primary">
+            <button id="close-chat-btn" class="text-on-surface-variant hover:text-primary">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
@@ -323,21 +192,11 @@
         </div>
     </div>
     <!-- FAB -->
-    <button onclick="document.getElementById('chatbot-panel').classList.toggle('hidden')" class="w-[56px] h-[56px] rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity">
+    <button id="toggle-chat-btn" class="w-[56px] h-[56px] rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity">
         <span class="material-symbols-outlined text-[24px]">smart_toy</span>
     </button>
 </div>
-<script>
-        // Simple logic to toggle the expand/collapse icon
-        document.querySelector('#chatbot-widget .cursor-pointer').addEventListener('click', function() {
-            const icon = document.getElementById('chat-toggle-icon');
-            if (document.getElementById('chatbot-widget').classList.contains('collapsed')) {
-                icon.textContent = 'expand_less';
-            } else {
-                icon.textContent = 'expand_more';
-            }
-        });
-    </script>
+
 
 
 </body></html>

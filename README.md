@@ -1,42 +1,67 @@
-# JudgeLens — LLM Evaluation Suite
+# LLM Judge Eval System
 
-AI-powered platform for objective, multi-agent scoring of LLM outputs.
+This project is a web application designed to manage, evaluate, and configure LLM models. It consists of a static Vanilla HTML/CSS/JS frontend and a Python Flask REST API backend, backed by MongoDB and Ollama for local model execution.
 
-## Project Structure
+## Tech Stack
+- **Frontend**: Vanilla HTML5, CSS3 (Tailwind via CDN), JavaScript.
+- **Backend**: Python 3.10+, Flask.
+- **Database**: MongoDB.
+- **AI/LLM**: Ollama (for local model inference).
 
+## Setup Instructions
+
+### 1. Prerequisites
+- **Python 3.10+** installed on your system.
+- **MongoDB** running locally (default port 27017).
+- **Ollama** installed and running on your system.
+
+### 2. Ollama Installation & Setup
+1. Install Ollama from [ollama.com](https://ollama.com/).
+2. Start the Ollama service on your machine.
+3. Pull an open-source model you'd like to use (e.g., `llama3`):
+   ```bash
+   ollama run llama3
+   ```
+
+### 3. Backend Setup (Flask + MongoDB)
+1. Navigate to the root of the project:
+   ```bash
+   cd llm-judge-eval-system
+   ```
+2. Create and activate a Python virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+3. Install the required dependencies:
+   ```bash
+   pip install -r backend/requirements.txt
+   ```
+4. Configure Environment Variables:
+   - Copy `.env.example` to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Make sure your `MONGO_URI` and `OLLAMA_BASE_URL` point to your running services.
+
+### 4. Running the Application
+
+**Start the Flask Backend**:
+Make sure your virtual environment is activated, then run:
+```bash
+python backend/run.py
 ```
-frontend/
-  public/assets/      ← Screen preview images (design reference)
-  src/
-    pages/            ← One HTML file per screen (Stitch exports, reorganised)
-    components/       ← Shared HTML partials extracted from pages
-backend/              ← Python / FastAPI app (coming soon)
-docs/                 ← Design system notes and token references
+The backend will run at `http://localhost:5000/api`.
+
+**Run the Frontend**:
+Since the frontend is vanilla HTML/CSS/JS, you can simply open the files in your browser, or start a simple HTTP server in the `frontend` directory:
+```bash
+cd frontend
+python -m http.server 8080
 ```
+Then navigate to `http://localhost:8080/src/pages/landing.html`.
 
-## Pages
-
-| File | Screen |
-|------|--------|
-| `pages/landing.html` | Marketing / landing page |
-| `pages/login.html` | Login / auth |
-| `pages/dashboard.html` | Dashboard overview |
-| `pages/judge-agents.html` | Judge agents status |
-| `pages/advisor-agent.html` | Advisor agent (free plan locked) |
-| `pages/evaluation-run-detail.html` | Evaluation run detail |
-| `pages/billing.html` | Billing & usage settings |
-| `pages/model-providers.html` | Model providers settings |
-
-## Shared Components
-
-| File | Used on |
-|------|---------|
-| `components/sidebar-nav.html` | All app pages (dashboard → billing) |
-| `components/top-nav.html` | Landing page, evaluation-run-detail |
-| `components/chatbot-widget.html` | All pages (two variants — see file comments) |
-| `components/footer.html` | Landing page only |
-
-## Design System
-
-See `docs/design-system-judgelens.md` and `docs/design-system-auralis.md` for
-full color palettes, typography scales, spacing tokens, and component specs.
+## API Endpoints
+- `GET /api/health` - Check backend and DB connection status.
+- `GET /api/models` - List local models available in Ollama.
+- `POST /api/evaluate` - Generate a response using a specified model and prompt.

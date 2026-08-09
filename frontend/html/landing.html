@@ -2,199 +2,18 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>JudgeLens - Judge LLM Output with Precision</title>
+<script src="../js/global.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "secondary-container": "#645efb",
-                      "surface-variant": "#e1e3e4",
-                      "primary-fixed": "#e2e2e2",
-                      "inverse-surface": "#2e3132",
-                      "surface-container-highest": "#e1e3e4",
-                      "on-primary-fixed": "#1b1b1b",
-                      "outline": "#7e7576",
-                      "on-error-container": "#93000a",
-                      "on-secondary": "#ffffff",
-                      "secondary": "#4b41e1",
-                      "on-primary-container": "#848484",
-                      "inverse-on-surface": "#f0f1f2",
-                      "on-primary": "#ffffff",
-                      "on-tertiary-fixed": "#002113",
-                      "surface-container-low": "#f3f4f5",
-                      "tertiary-container": "#002113",
-                      "tertiary": "#000000",
-                      "surface-tint": "#5e5e5e",
-                      "primary": "#000000",
-                      "surface-container": "#edeeef",
-                      "on-tertiary": "#ffffff",
-                      "on-surface-variant": "#4c4546",
-                      "error-container": "#ffdad6",
-                      "on-tertiary-container": "#009668",
-                      "on-tertiary-fixed-variant": "#005236",
-                      "surface-dim": "#d9dadb",
-                      "inverse-primary": "#c6c6c6",
-                      "outline-variant": "#cfc4c5",
-                      "surface-bright": "#f8f9fa",
-                      "on-error": "#ffffff",
-                      "primary-fixed-dim": "#c6c6c6",
-                      "on-secondary-container": "#fffbff",
-                      "on-secondary-fixed": "#0f0069",
-                      "primary-container": "#1b1b1b",
-                      "secondary-fixed": "#e2dfff",
-                      "tertiary-fixed-dim": "#4edea3",
-                      "on-background": "#191c1d",
-                      "error": "#ba1a1a",
-                      "tertiary-fixed": "#6ffbbe",
-                      "on-surface": "#191c1d",
-                      "surface-container-lowest": "#ffffff",
-                      "surface": "#f8f9fa",
-                      "on-primary-fixed-variant": "#474747",
-                      "secondary-fixed-dim": "#c3c0ff",
-                      "on-secondary-fixed-variant": "#3323cc",
-                      "surface-container-high": "#e7e8e9",
-                      "background": "#f8f9fa"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.125rem",
-                      "lg": "0.25rem",
-                      "xl": "0.5rem",
-                      "full": "0.75rem"
-              },
-              "spacing": {
-                      "margin-page": "32px",
-                      "unit-sm": "8px",
-                      "unit-xs": "4px",
-                      "unit-xl": "48px",
-                      "unit-lg": "24px",
-                      "max-width": "1280px",
-                      "unit-md": "16px",
-                      "gutter": "16px"
-              },
-              "fontFamily": {
-                      "body-lg": [
-                              "Inter"
-                      ],
-                      "body-sm": [
-                              "Inter"
-                      ],
-                      "headline-md": [
-                              "Geist"
-                      ],
-                      "headline-sm": [
-                              "Geist"
-                      ],
-                      "display-lg": [
-                              "Geist"
-                      ],
-                      "mono-sm": [
-                              "Geist"
-                      ],
-                      "body-md": [
-                              "Inter"
-                      ],
-                      "label-md": [
-                              "Geist"
-                      ]
-              },
-              "fontSize": {
-                      "body-lg": [
-                              "16px",
-                              {
-                                      "lineHeight": "24px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "body-sm": [
-                              "13px",
-                              {
-                                      "lineHeight": "18px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "32px",
-                                      "letterSpacing": "-0.01em",
-                                      "fontWeight": "600"
-                              }
-                      ],
-                      "headline-sm": [
-                              "18px",
-                              {
-                                      "lineHeight": "24px",
-                                      "fontWeight": "600"
-                              }
-                      ],
-                      "display-lg": [
-                              "48px",
-                              {
-                                      "lineHeight": "56px",
-                                      "letterSpacing": "-0.02em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "mono-sm": [
-                              "12px",
-                              {
-                                      "lineHeight": "18px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "body-md": [
-                              "14px",
-                              {
-                                      "lineHeight": "20px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "label-md": [
-                              "12px",
-                              {
-                                      "lineHeight": "16px",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "600"
-                              }
-                      ]
-              }
-      },
-          },
-        }
-      </script>
-<style>
-          .marquee {
-            overflow: hidden;
-            white-space: nowrap;
-          }
-          .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-          }
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .gradient-text {
-              background: linear-gradient(90deg, #000000 0%, #4b41e1 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-          }
-          .hero-gradient {
-              background: radial-gradient(circle at center, rgba(75, 65, 225, 0.1) 0%, rgba(248, 249, 250, 0) 70%);
-          }
-      </style>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/landing.css">
 </head>
 <body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
 <!-- TopNavBar -->
 <header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 sticky">
 <div class="flex justify-between items-center w-full px-margin-page py-unit-sm max-w-max-width mx-auto">
-<div class="flex items-center gap-4"><a class="flex items-center gap-3 group" href="#"><div class="w-8 h-8 bg-primary rounded flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-primary" style="font-variation-settings: 'FILL' 1">gavel</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight leading-none">JudgeLens</span><span class="text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant leading-none mt-0.5">LLM Evaluation Suite</span></div></a></div>
+<div class="flex items-center gap-4"><a class="flex items-center gap-3 group" href="#"><div class="w-8 h-8 bg-primary rounded flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-primary icon-fill">gavel</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight leading-none">JudgeLens</span><span class="text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant leading-none mt-0.5">LLM Evaluation Suite</span></div></a></div>
 <nav class="hidden md:flex items-center gap-6">
 <a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Evaluations</a>
 <a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Leaderboard</a>
@@ -241,12 +60,12 @@
 <span class="material-symbols-outlined text-secondary">smart_toy</span>
 <span class="font-mono-sm text-mono-sm text-on-surface-variant">Agent Alpha</span>
 </div>
-<span class="material-symbols-outlined text-outline-variant animate-bounce hidden md:block" style="animation-direction: alternate;">arrow_forward</span>
+<span class="material-symbols-outlined text-outline-variant animate-bounce hidden md:block animate-alternate">arrow_forward</span>
 <div class="p-6 bg-primary rounded-xl flex flex-col items-center gap-2 relative z-20">
 <span class="text-on-primary font-display-lg text-display-lg">94</span>
 <span class="font-label-md text-label-md text-surface-variant">Aggregated Score</span>
 </div>
-<span class="material-symbols-outlined text-outline-variant animate-bounce hidden md:block" style="animation-direction: alternate; animation-delay: 0.2s;">arrow_back</span>
+<span class="material-symbols-outlined text-outline-variant animate-bounce hidden md:block animate-alternate animate-delay-200">arrow_back</span>
 <div class="p-4 bg-surface rounded-lg border border-outline-variant shadow-sm flex flex-col items-center gap-2">
 <span class="material-symbols-outlined text-secondary">psychology</span>
 <span class="font-mono-sm text-mono-sm text-on-surface-variant">Agent Beta</span>
@@ -439,7 +258,7 @@
 <!-- Footer -->
 <footer class="bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width bottom-0">
 <div class="w-full px-margin-page py-unit-xl flex flex-col md:flex-row justify-between items-center max-w-max-width mx-auto gap-8 md:gap-0">
-<div class="flex items-center gap-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-primary rounded flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-primary" style="font-variation-settings: 'FILL' 1">gavel</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight leading-none">JudgeLens</span><span class="text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant leading-none mt-0.5">LLM Evaluation Suite</span></div></div></div>
+<div class="flex items-center gap-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-primary rounded flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-primary icon-fill">gavel</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight leading-none">JudgeLens</span><span class="text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant leading-none mt-0.5">LLM Evaluation Suite</span></div></div></div>
 <nav class="flex flex-wrap justify-center gap-6">
 <a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">API Reference</a>
 <a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Status</a>

@@ -14,7 +14,7 @@
     <div id="chat-panel" class="hidden w-[360px] h-[420px] bg-surface-bright border border-outline-variant rounded-xl shadow-lg flex flex-col overflow-hidden">
         <div class="bg-primary p-unit-md flex justify-between items-center">
             <h3 class="text-on-primary font-headline-sm text-headline-sm">Evaluation Advisor</h3>
-            <button class="text-on-primary hover:opacity-80" onclick="document.getElementById('chat-panel').classList.add('hidden')">
+            <button id="close-chat-btn" class="text-on-primary hover:opacity-80">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
@@ -31,7 +31,7 @@
         </div>
     </div>
     <!-- FAB -->
-    <button onclick="document.getElementById('chat-panel').classList.toggle('hidden')" class="w-[56px] h-[56px] bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+    <button id="toggle-chat-btn" class="w-[56px] h-[56px] bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
         <span class="material-symbols-outlined text-2xl">forum</span>
     </button>
 </div>
