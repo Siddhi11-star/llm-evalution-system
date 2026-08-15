@@ -157,6 +157,12 @@ export const IcSparkles = (p: IconProps) => (
     <path d="M5 3v4M3 5h4M19 17v4M17 19h4"/>
   </svg>
 )
+export const IcSwarm = (p: IconProps) => (
+  <svg width={p.size ?? 18} height={p.size ?? 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/>
+    <line x1="12" y1="8" x2="12" y2="8"/><line x1="7" y1="16" x2="10" y2="13"/><line x1="17" y1="16" x2="14" y2="13"/>
+  </svg>
+)
 export const IcMic = (p: IconProps) => (
   <svg width={p.size ?? 18} height={p.size ?? 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
