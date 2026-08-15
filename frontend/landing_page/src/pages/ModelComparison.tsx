@@ -29,24 +29,24 @@ export default function ModelComparison() {
       <TopBar title="Compare Models">
         {/* Model multi-select */}
         <div style={{ position: 'relative' }}>
-          <button onClick={() => setDropOpen(!dropOpen)} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 14px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 500 }}>
+          <button onClick={() => setDropOpen(!dropOpen)} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 14px', borderRadius: 9, background: 'var(--color-input-bg)', border: '1px solid var(--color-border-light)', color: 'var(--color-foreground)', cursor: 'pointer', fontSize: 13, fontWeight: 500 }}>
             <span>{selected.length} models selected</span>
             <IcChevronDown size={14} style={{ transform: dropOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
           </button>
           {dropOpen && (
-            <div style={{ position: 'absolute', top: '110%', right: 0, width: 240, background: '#111116', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, overflow: 'hidden', zIndex: 50, boxShadow: '0 16px 48px rgba(0,0,0,0.5)' }}>
+            <div style={{ position: 'absolute', top: '110%', right: 0, width: 240, background: 'var(--color-card)', border: '1px solid var(--color-border-light)', borderRadius: 12, overflow: 'hidden', zIndex: 50, boxShadow: '0 16px 48px rgba(0,0,0,0.5)' }}>
               {ALL_MODELS.map(m => {
                 const on = selected.includes(m)
                 return (
                   <div key={m} onClick={() => toggle(m)} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.1s', background: on ? 'rgba(124,58,237,0.1)' : 'transparent' }}
-                    onMouseEnter={e => { if (!on) (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.04)' }}
+                    onMouseEnter={e => { if (!on) (e.currentTarget as HTMLDivElement).style.background = 'var(--color-input-bg)' }}
                     onMouseLeave={e => { if (!on) (e.currentTarget as HTMLDivElement).style.background = 'transparent' }}
                   >
-                    <div style={{ width: 16, height: 16, borderRadius: 4, border: `1px solid ${on ? '#7C3AED' : 'rgba(255,255,255,0.15)'}`, background: on ? '#7C3AED' : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 16, height: 16, borderRadius: 4, border: `1px solid ${on ? '#7C3AED' : 'var(--color-border-light)'}`, background: on ? '#7C3AED' : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       {on && <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>}
                     </div>
                     {MODEL_DATA[m] && <div style={{ width: 8, height: 8, borderRadius: '50%', background: MODEL_DATA[m].color, flexShrink: 0 }} />}
-                    <span style={{ fontSize: 12, color: on ? '#fff' : 'rgba(255,255,255,0.5)', fontFamily: 'JetBrains Mono, monospace' }}>{m}</span>
+                    <span style={{ fontSize: 12, color: on ? 'var(--color-foreground)' : 'var(--color-muted)', fontFamily: 'JetBrains Mono, monospace' }}>{m}</span>
                   </div>
                 )
               })}
@@ -61,10 +61,10 @@ export default function ModelComparison() {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                  <th style={{ padding: '10px 24px', textAlign: 'left', fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Rubric</th>
+                <tr style={{ borderBottom: '1px solid var(--color-border-faint)' }}>
+                  <th style={{ padding: '10px 24px', textAlign: 'left', fontSize: 11, fontWeight: 600, color: 'var(--color-muted-faint)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Rubric</th>
                   {selected.map(m => (
-                    <th key={m} style={{ padding: '10px 20px', textAlign: 'center', fontSize: 11, fontWeight: 600, color: MODEL_DATA[m]?.color ?? '#fff', letterSpacing: '0.04em', whiteSpace: 'nowrap', fontFamily: 'JetBrains Mono, monospace' }}>{m}</th>
+                    <th key={m} style={{ padding: '10px 20px', textAlign: 'center', fontSize: 11, fontWeight: 600, color: MODEL_DATA[m]?.color ?? 'var(--color-foreground)', letterSpacing: '0.04em', whiteSpace: 'nowrap', fontFamily: 'JetBrains Mono, monospace' }}>{m}</th>
                   ))}
                 </tr>
               </thead>
@@ -73,14 +73,14 @@ export default function ModelComparison() {
                   const scores = selected.map(m => MODEL_DATA[m]?.[r] ?? 0)
                   const best = Math.max(...scores)
                   return (
-                    <tr key={r} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                      <td style={{ padding: '13px 24px', fontSize: 13, fontWeight: 600, color: '#fff', textTransform: 'capitalize' }}>{r}</td>
+                    <tr key={r} style={{ borderBottom: '1px solid var(--color-input-bg)' }}>
+                      <td style={{ padding: '13px 24px', fontSize: 13, fontWeight: 600, color: 'var(--color-foreground)', textTransform: 'capitalize' }}>{r}</td>
                       {selected.map((m, i) => {
                         const s = MODEL_DATA[m]?.[r] ?? 0
                         const isBest = s === best
                         return (
                           <td key={m} style={{ padding: '13px 20px', textAlign: 'center', background: isBest ? 'rgba(52,211,153,0.06)' : 'transparent' }}>
-                            <span style={{ fontSize: 15, fontWeight: 700, color: isBest ? '#34D399' : 'rgba(255,255,255,0.7)' }}>{s}</span>
+                            <span style={{ fontSize: 15, fontWeight: 700, color: isBest ? '#34D399' : 'var(--color-muted-stronger)' }}>{s}</span>
                             {isBest && <span style={{ fontSize: 10, color: '#34D399', marginLeft: 4 }}>↑</span>}
                           </td>
                         )
@@ -112,7 +112,7 @@ export default function ModelComparison() {
           {/* Cost/Latency bar chart */}
           <div className="card-base" style={{ padding: '20px 16px' }}>
             <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 4, paddingLeft: 8 }}>Cost & Latency</div>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginBottom: 16, paddingLeft: 8 }}>Cost $/1k tokens (blue) · Latency P95 in seconds (purple)</div>
+            <div style={{ fontSize: 11, color: 'var(--color-muted-faint)', marginBottom: 16, paddingLeft: 8 }}>Cost $/1k tokens (blue) · Latency P95 in seconds (purple)</div>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={costData} margin={{ top: 5, right: 20, left: -20, bottom: 0 }}>
                 <CartesianGrid stroke="var(--color-border)" strokeDasharray="4 4" />
