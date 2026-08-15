@@ -362,15 +362,15 @@ function ScoreRing({ score, color, size = 88 }: { score: number; color: string; 
   return (
     <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
       <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={6} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--color-border-faint)" strokeWidth={6} />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={6}
           strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
           style={{ transition: 'stroke-dashoffset 0.8s ease' }}
         />
       </svg>
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <span style={{ fontSize: size * 0.26, fontWeight: 800, color: '#fff', lineHeight: 1 }}>{score}</span>
-        <span style={{ fontSize: size * 0.11, color: 'rgba(255,255,255,0.4)', fontWeight: 600, letterSpacing: '0.06em' }}>SCORE</span>
+        <span style={{ fontSize: size * 0.26, fontWeight: 800, color: 'var(--color-foreground)', lineHeight: 1 }}>{score}</span>
+        <span style={{ fontSize: size * 0.11, color: 'var(--color-muted)', fontWeight: 600, letterSpacing: '0.06em' }}>SCORE</span>
       </div>
     </div>
   )
@@ -378,9 +378,9 @@ function ScoreRing({ score, color, size = 88 }: { score: number; color: string; 
 
 function MetricPill({ label, value, accent }: { label: string; value: string; accent?: string }) {
   return (
-    <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 10, padding: '10px 14px', border: '1px solid rgba(255,255,255,0.06)' }}>
-      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', marginBottom: 4, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{label}</div>
-      <div style={{ fontSize: 15, fontWeight: 700, color: accent ?? '#fff' }}>{value}</div>
+    <div style={{ background: 'var(--color-surface)', borderRadius: 10, padding: '10px 14px', border: '1px solid var(--color-border-faint)' }}>
+      <div style={{ fontSize: 10, color: 'var(--color-muted-faint)', marginBottom: 4, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{label}</div>
+      <div style={{ fontSize: 15, fontWeight: 700, color: accent ?? 'var(--color-foreground)' }}>{value}</div>
     </div>
   )
 }
@@ -392,7 +392,7 @@ function TagList({ items, variant }: { items: string[]; variant: 'strength' | 'w
   return (
     <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
       {items.map(item => (
-        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>
+        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: 'var(--color-muted-stronger)', lineHeight: 1.5 }}>
           <span style={{ width: 16, height: 16, borderRadius: '50%', background: bg, border: `1px solid ${border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color, flexShrink: 0, marginTop: 1, fontSize: 10 }}>
             {variant === 'strength' ? '✓' : '−'}
           </span>
@@ -413,10 +413,10 @@ function PrimaryRecCard({ rec, similarRuns }: { rec: ModelRec; similarRuns: numb
           <div style={{ flex: 1, minWidth: 200 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, flexWrap: 'wrap' }}>
               <span style={{ fontSize: 10, padding: '4px 10px', borderRadius: 9999, background: `${rec.color}18`, border: `1px solid ${rec.color}40`, color: rec.color, fontWeight: 700, letterSpacing: '0.04em' }}>TOP RECOMMENDATION</span>
-              <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>{similarRuns} similar runs analyzed</span>
+              <span style={{ fontSize: 11, color: 'var(--color-muted-faint)' }}>{similarRuns} similar runs analyzed</span>
             </div>
-            <h3 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', color: '#fff' }}>{rec.model}</h3>
-            <p style={{ margin: 0, fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{rec.provider}</p>
+            <h3 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-foreground)' }}>{rec.model}</h3>
+            <p style={{ margin: 0, fontSize: 13, color: 'var(--color-muted)' }}>{rec.provider}</p>
           </div>
         </div>
 
@@ -446,18 +446,18 @@ function AltModelCard({ rec, rank }: { rec: ModelRec; rank: number }) {
   return (
     <div className="card-base" style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 14, height: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.06em' }}>ALT #{rank}</span>
+        <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--color-muted-faint)', letterSpacing: '0.06em' }}>ALT #{rank}</span>
         <span style={{ fontSize: 18, fontWeight: 800, color: rec.color }}>{rec.score}</span>
       </div>
       <div>
-        <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 2 }}>{rec.model}</div>
-        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>{rec.provider}</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--color-foreground)', marginBottom: 2 }}>{rec.model}</div>
+        <div style={{ fontSize: 11, color: 'var(--color-muted-faint)' }}>{rec.provider}</div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
         <MetricPill label="Cost" value={rec.costPerRequest} />
         <MetricPill label="Latency" value={rec.latencyP95} />
       </div>
-      <p style={{ margin: 0, fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.55 }}>
+      <p style={{ margin: 0, fontSize: 12, color: 'var(--color-muted)', lineHeight: 1.55 }}>
         {rec.strengths[0]}
       </p>
     </div>
@@ -477,7 +477,7 @@ function LoadingState() {
           ))}
         </div>
       </div>
-      <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>Analyzing your task against evaluation history & benchmarks…</p>
+      <p style={{ margin: 0, fontSize: 14, color: 'var(--color-muted)' }}>Analyzing your task against evaluation history & benchmarks…</p>
     </div>
   )
 }
@@ -527,9 +527,9 @@ export default function AdvisorAgentPage() {
   return (
     <>
       <TopBar title="Advisor Agent">
-        <Link to="/dashboard/compare" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'rgba(255,255,255,0.45)', textDecoration: 'none', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(255,255,255,0.08)', transition: 'all 0.15s' }}
-          onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
-          onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
+        <Link to="/dashboard/compare" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--color-muted)', textDecoration: 'none', padding: '6px 12px', borderRadius: 8, border: '1px solid var(--color-border)', transition: 'all 0.15s' }}
+          onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-foreground)'; e.currentTarget.style.borderColor = 'var(--color-border-light)' }}
+          onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-muted)'; e.currentTarget.style.borderColor = 'var(--color-border)' }}
         >
           <IcCompare size={14} /> Compare Models
         </Link>
@@ -546,7 +546,7 @@ export default function AdvisorAgentPage() {
               </div>
               <div>
                 <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em' }}>Advisor Agent</h2>
-                <p style={{ margin: '4px 0 0', fontSize: 14, color: 'rgba(255,255,255,0.45)', maxWidth: 560, lineHeight: 1.55 }}>
+                <p style={{ margin: '4px 0 0', fontSize: 14, color: 'var(--color-muted)', maxWidth: 560, lineHeight: 1.55 }}>
                   Describe what you're building and get a data-backed model recommendation powered by your evaluation history and benchmark scores.
                 </p>
               </div>
@@ -555,7 +555,7 @@ export default function AdvisorAgentPage() {
 
           {/* Task input */}
           <div className="card-base" style={{ padding: 28, marginBottom: 24 }}>
-            <label htmlFor="advisor-task" style={{ display: 'block', fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 14 }}>
+            <label htmlFor="advisor-task" style={{ display: 'block', fontSize: 15, fontWeight: 700, color: 'var(--color-foreground)', marginBottom: 14 }}>
               What are you trying to build?
             </label>
             <textarea
@@ -566,30 +566,30 @@ export default function AdvisorAgentPage() {
               rows={4}
               style={{
                 width: '100%', boxSizing: 'border-box', resize: 'vertical', minHeight: 110,
-                background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 12, padding: '16px 18px', fontSize: 14, color: '#fff',
+                background: 'var(--color-surface)', border: '1px solid var(--color-border-light)',
+                borderRadius: 12, padding: '16px 18px', fontSize: 14, color: 'var(--color-foreground)',
                 outline: 'none', fontFamily: 'Inter, sans-serif', lineHeight: 1.6,
                 transition: 'border-color 0.15s',
               }}
               onFocus={e => (e.target.style.borderColor = 'rgba(124,58,237,0.5)')}
-              onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+              onBlur={e => (e.target.style.borderColor = 'var(--color-border-light)')}
             />
 
             <div style={{ marginTop: 16 }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 10 }}>Quick options</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--color-muted-faint)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 10 }}>Quick options</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {QUICK_OPTIONS.map(opt => {
                   const active = activeCategory === opt.id
                   return (
                     <button key={opt.id} onClick={() => handleQuickOption(opt)} style={{
                       display: 'flex', alignItems: 'center', gap: 8, padding: '9px 16px', borderRadius: 10,
-                      background: active ? `${opt.color}15` : 'rgba(255,255,255,0.03)',
-                      border: `1px solid ${active ? `${opt.color}50` : 'rgba(255,255,255,0.08)'}`,
-                      color: active ? opt.color : 'rgba(255,255,255,0.6)',
+                      background: active ? `${opt.color}15` : 'var(--color-surface)',
+                      border: `1px solid ${active ? `${opt.color}50` : 'var(--color-border)'}`,
+                      color: active ? opt.color : 'var(--color-muted-strong)',
                       cursor: 'pointer', fontSize: 13, fontWeight: 500, transition: 'all 0.15s',
                     }}
-                      onMouseEnter={e => { if (!active) { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#fff' } }}
-                      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)' } }}
+                      onMouseEnter={e => { if (!active) { e.currentTarget.style.background = 'var(--color-border-faint)'; e.currentTarget.style.color = 'var(--color-foreground)' } }}
+                      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'var(--color-surface)'; e.currentTarget.style.color = 'var(--color-muted-strong)' } }}
                     >
                       <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, opacity: 0.7 }}>{opt.icon}</span>
                       {opt.label}
@@ -612,9 +612,9 @@ export default function AdvisorAgentPage() {
               </button>
               {result && (
                 <button onClick={() => { setResult(null); setTask(''); setActiveCategory(null) }}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 12px' }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--color-muted)', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 12px' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-foreground)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}
                 >
                   <IcRotate size={14} /> Start over
                 </button>
@@ -630,15 +630,15 @@ export default function AdvisorAgentPage() {
               {/* Primary recommendation */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>Recommendation</div>
-                  <span style={{ fontSize: 11, padding: '3px 10px', borderRadius: 9999, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)' }}>{result.category}</span>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-foreground)' }}>Recommendation</div>
+                  <span style={{ fontSize: 11, padding: '3px 10px', borderRadius: 9999, background: 'var(--color-hover)', border: '1px solid var(--color-border)', color: 'var(--color-muted)' }}>{result.category}</span>
                 </div>
                 <PrimaryRecCard rec={result.primary} similarRuns={result.similarRuns} />
               </div>
 
               {/* Alternatives */}
               <div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 14 }}>Alternative Models</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-foreground)', marginBottom: 14 }}>Alternative Models</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
                   {result.alternatives.map((alt, i) => (
                     <AltModelCard key={alt.model} rec={alt} rank={i + 1} />
@@ -654,10 +654,10 @@ export default function AdvisorAgentPage() {
                   </div>
                   <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Why this recommendation?</h3>
                 </div>
-                <p style={{ margin: '0 0 20px', fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}>{result.rationale}</p>
+                <p style={{ margin: '0 0 20px', fontSize: 14, color: 'var(--color-muted-strong)', lineHeight: 1.7 }}>{result.rationale}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {result.whyPoints.map(point => (
-                    <div key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.55 }}>
+                    <div key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: 'var(--color-muted-stronger)', lineHeight: 1.55 }}>
                       <span style={{ width: 20, height: 20, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#A78BFA', flexShrink: 0, marginTop: 1 }}>
                         <IcCheck size={11} />
                       </span>
@@ -665,7 +665,7 @@ export default function AdvisorAgentPage() {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: 24, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                <div style={{ marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--color-border-faint)', display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                   <Link to="/dashboard/evaluations" className="pill-primary" style={{ fontSize: 13, padding: '10px 18px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                     Run Evaluation <IcArrowRight size={13} />
                   </Link>
@@ -679,7 +679,7 @@ export default function AdvisorAgentPage() {
 
           {/* Empty state hint */}
           {!result && !loading && (
-            <div style={{ textAlign: 'center', padding: '32px 16px', color: 'rgba(255,255,255,0.25)' }}>
+            <div style={{ textAlign: 'center', padding: '32px 16px', color: 'var(--color-muted-weak)' }}>
               <p style={{ margin: 0, fontSize: 13 }}>Enter a task description or pick a quick option, then click Get Recommendation.</p>
             </div>
           )}
@@ -687,10 +687,10 @@ export default function AdvisorAgentPage() {
 
         {/* Recent sidebar */}
         <aside className="advisor-recent" style={{
-          width: 280, flexShrink: 0, borderLeft: '1px solid rgba(255,255,255,0.06)',
-          padding: '24px 20px', overflowY: 'auto', background: 'rgba(255,255,255,0.01)',
+          width: 280, flexShrink: 0, borderLeft: '1px solid var(--color-border-faint)',
+          padding: '24px 20px', overflowY: 'auto', background: 'var(--color-surface-deeper)',
         }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-muted-faint)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>
             Recent Recommendations
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -700,18 +700,18 @@ export default function AdvisorAgentPage() {
                 background: 'transparent', border: '1px solid transparent', transition: 'all 0.15s',
                 width: '100%',
               }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-input-bg)'; e.currentTarget.style.borderColor = 'var(--color-border-faint)' }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'transparent' }}
               >
-                <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.65)', lineHeight: 1.45, marginBottom: 8 }}>{item.task}</div>
+                <div style={{ fontSize: 12.5, color: 'var(--color-muted-stronger)', lineHeight: 1.45, marginBottom: 8 }}>{item.task}</div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span style={{ fontSize: 11, fontWeight: 700, color: item.color, fontFamily: 'JetBrains Mono, monospace' }}>{item.model}</span>
-                    <span style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>{item.score}</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--color-muted-faint)', background: 'var(--color-hover)', padding: '2px 6px', borderRadius: 4 }}>{item.score}</span>
                   </div>
-                  <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>{item.ts}</span>
+                  <span style={{ fontSize: 10, color: 'var(--color-muted-weak)' }}>{item.ts}</span>
                 </div>
-                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', marginTop: 6 }}>{item.category}</div>
+                <div style={{ fontSize: 10, color: 'var(--color-muted-weak)', marginTop: 6 }}>{item.category}</div>
               </button>
             ))}
           </div>
@@ -722,7 +722,7 @@ export default function AdvisorAgentPage() {
         @keyframes advisorPulse { 0%,100%{opacity:0.3;transform:scale(0.85)} 50%{opacity:1;transform:scale(1)} }
         @media (max-width: 960px) {
           .advisor-layout { flex-direction: column !important; }
-          .advisor-recent { width: 100% !important; border-left: none !important; border-top: 1px solid rgba(255,255,255,0.06) !important; }
+          .advisor-recent { width: 100% !important; border-left: none !important; border-top: 1px solid var(--color-border-faint) !important; }
         }
       `}</style>
     </>
