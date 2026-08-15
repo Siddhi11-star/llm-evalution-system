@@ -1,7 +1,6 @@
 import { useNavigate, useLocation } from 'react-router'
 import { useState, useRef, useEffect } from 'react'
 import { TopBar } from '../components/AppShell'
-import ChatEmptyStateArt from '../components/ChatEmptyStateArt'
 import {
   IcSend,
   IcPlus,
@@ -603,8 +602,8 @@ const handleSend = (overrideText?: string) => {
               <div style={{ width: '100%', maxWidth: 680 }}>
                 {/* Centered welcome message */}
                 <div style={{ textAlign: 'center', marginBottom: 28 }}>
-                  <div style={{ margin: '0 auto 18px' }}>
-                    <ChatEmptyStateArt width={120} animated={true} />
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: 'linear-gradient(135deg, #7C3AED, #38BDF8)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 18px' }}>
+                    <IcSparkles size={24} style={{ color: '#fff' }} />
                   </div>
                   <h1 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 8px', color: 'var(--color-foreground)' }}>
                     Welcome to JudgeAI Chatbot
