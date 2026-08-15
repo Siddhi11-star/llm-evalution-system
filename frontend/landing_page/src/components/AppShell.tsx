@@ -7,12 +7,13 @@ import {
   IcJudge,
   IcAdvisor,
   IcCompare,
+  IcSwarm,      // ← ADD
   IcSettings,
   IcMenu,
   IcSun,
   IcMoon,
   IcSearch,
-} from './icons'
+} from './icons' 
 
 const NAV = [
   { to: '/dashboard', label: 'Overview', icon: IcHome },
@@ -20,6 +21,7 @@ const NAV = [
   { to: '/dashboard/evaluations', label: 'Evaluations', icon: IcJudge },
   { to: '/dashboard/judges', label: 'Judge Agents', icon: IcJudge, aliases: ['/dashboard/judge-config'] },
   { to: '/dashboard/advisor', label: 'Advisor Agent', icon: IcAdvisor, aliases: ['/dashboard/advisor-agent'] },
+  { to: '/dashboard/swarm', label: 'Agent Swarm', icon: IcSwarm },  // ← ADD
   { to: '/dashboard/compare', label: 'Model Comparison', icon: IcCompare, aliases: ['/dashboard/model-comparison', '/dashboard/comparison'] },
   { to: '/dashboard/settings', label: 'Settings', icon: IcSettings },
 ]
